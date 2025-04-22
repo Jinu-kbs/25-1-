@@ -1,1 +1,271 @@
-
+<!-- 4페이지 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project-Based Learning의 개념 및 특징</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        .header-accent {
+            background: linear-gradient(90deg, #2196f3 0%, #4caf50 100%);
+            height: 8px;
+        }
+        .title-gradient {
+            background: linear-gradient(90deg, #1976d2, #388e3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .pbl-cycle {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+        .cycle-step {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .cycle-step:hover {
+            transform: scale(1.05);
+        }
+        .step-1 {
+            top: 0;
+            left: 150px;
+            background: linear-gradient(135deg, #bbdefb, #90caf9);
+        }
+        .step-2 {
+            top: 100px;
+            right: 30px;
+            background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+        }
+        .step-3 {
+            bottom: 100px;
+            right: 30px;
+            background: linear-gradient(135deg, #b3e5fc, #81d4fa);
+        }
+        .step-4 {
+            bottom: 0;
+            left: 150px;
+            background: linear-gradient(135deg, #dcedc8, #c5e1a5);
+        }
+        .step-5 {
+            bottom: 100px;
+            left: 30px;
+            background: linear-gradient(135deg, #b2ebf2, #80deea);
+        }
+        .step-6 {
+            top: 100px;
+            left: 30px;
+            background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+        }
+        .feature-card {
+            background: linear-gradient(135deg, #f5f9ff 0%, #f1f8e9 100%);
+            border-radius: 12px;
+            border-left: 5px solid #2196f3;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-3px);
+        }
+        .footer-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(90deg, rgba(33, 150, 243, 0.1) 0%, rgba(76, 175, 80, 0.1) 100%);
+            border-top-left-radius: 50% 80%;
+            border-top-right-radius: 50% 80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-accent"></div>
+        
+        <!-- Main Content -->
+        <div class="p-12 h-full flex flex-col">
+            <!-- Title -->
+            <div class="mb-6">
+                <h1 class="title-gradient text-4xl font-bold">Project-Based Learning의 개념 및 특징</h1>
+                <h2 class="text-xl text-gray-600 mt-2">What is Project-Based Learning?</h2>
+                <div class="w-24 h-1 bg-blue-500 mt-3"></div>
+            </div>
+            
+            <!-- Two Columns Layout -->
+            <div class="grid grid-cols-2 gap-8 mb-6">
+                <!-- Left Column: Definition and Features -->
+                <div>
+                    <!-- PBL Definition -->
+                    <div class="bg-gradient-to-r from-blue-50 to-green-50 p-5 rounded-lg mb-6">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-project-diagram text-blue-500 mr-3"></i>
+                            PBL의 정의
+                        </h3>
+                        <p class="text-gray-700">학습자가 <span class="font-medium text-blue-600">실제적인 문제</span>나 과제를 중심으로 <span class="font-medium text-green-600">주도적으로 탐구</span>하고 해결책을 도출하는 과정에서 지식을 구성하고 역량을 개발하는 학습 방법</p>
+                    </div>
+                    
+                    <!-- Key Features -->
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">핵심 특징</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="feature-card p-3 flex items-start">
+                            <div class="mr-3 text-blue-500 text-xl">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">실제적 탐구</h4>
+                                <p class="text-gray-600 text-sm">실생활 맥락의 문제를 다루며 진정한 탐구 과정 경험</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card p-3 flex items-start">
+                            <div class="mr-3 text-blue-500 text-xl">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">협력적 학습</h4>
+                                <p class="text-gray-600 text-sm">팀 기반 활동을 통한 의사소통 및 협업 역량 강화</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card p-3 flex items-start">
+                            <div class="mr-3 text-blue-500 text-xl">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">융합적 사고</h4>
+                                <p class="text-gray-600 text-sm">여러 학문 분야의 지식과 기술을 통합적으로 활용</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-card p-3 flex items-start">
+                            <div class="mr-3 text-blue-500 text-xl">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">창의적 문제 해결</h4>
+                                <p class="text-gray-600 text-sm">다양한 관점에서 문제를 분석하고 혁신적 해결책 도출</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: PBL Cycle and Benefits -->
+                <div>
+                    <!-- PBL Cycle -->
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">PBL 학습 사이클</h3>
+                    
+                    <div class="pbl-cycle mb-4">
+                        <div class="cycle-step step-1">
+                            <div class="text-center text-white">
+                                <i class="fas fa-question-circle mb-1"></i>
+                                <div class="text-sm font-medium">문제 제시</div>
+                            </div>
+                        </div>
+                        <div class="cycle-step step-2">
+                            <div class="text-center text-white">
+                                <i class="fas fa-tasks mb-1"></i>
+                                <div class="text-sm font-medium">계획 수립</div>
+                            </div>
+                        </div>
+                        <div class="cycle-step step-3">
+                            <div class="text-center text-white">
+                                <i class="fas fa-search mb-1"></i>
+                                <div class="text-sm font-medium">정보 수집</div>
+                            </div>
+                        </div>
+                        <div class="cycle-step step-4">
+                            <div class="text-center text-white">
+                                <i class="fas fa-puzzle-piece mb-1"></i>
+                                <div class="text-sm font-medium">결과 도출</div>
+                            </div>
+                        </div>
+                        <div class="cycle-step step-5">
+                            <div class="text-center text-white">
+                                <i class="fas fa-share-alt mb-1"></i>
+                                <div class="text-sm font-medium">발표/공유</div>
+                            </div>
+                        </div>
+                        <div class="cycle-step step-6">
+                            <div class="text-center text-white">
+                                <i class="fas fa-sync-alt mb-1"></i>
+                                <div class="text-sm font-medium">성찰/평가</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Benefits for Chemistry Education -->
+                    <div class="bg-gradient-to-r from-green-50 to-blue-50 p-5 rounded-lg">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-flask text-green-500 mr-2"></i>
+                            일반화학 교육에서의 PBL 효과
+                        </h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700">추상적 화학 개념의 실제적 맥락 이해 촉진</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700">과학적 탐구 과정의 실질적 경험 제공</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700">실험 설계 및 데이터 분석 능력 함양</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700">과학-기술-사회 연계성 인식 증진</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Quote -->
+            <div class="flex-grow"></div>
+            <div class="flex justify-between items-center text-gray-500 text-sm mt-4">
+                <div class="flex items-center">
+                    <i class="fas fa-quote-left mr-2 text-blue-400"></i>
+                    <span>"PBL은 단순한 지식 습득을 넘어 미래 교사에게 필요한 종합적 역량을 길러줍니다."</span>
+                </div>
+                <div>
+                    <p>김병선 | 경상국립대학교 화학교육과</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Design Element -->
+        <div class="footer-wave"></div>
+    </div>
+</body>
+</html>
