@@ -1,120 +1,211 @@
+<!-- 3페이지 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>예비 교사를 위한 일반화학 PBL: AI 및 과학 시뮬레이션 활용</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      font-family: 'Noto Sans KR', sans-serif;
-      background: linear-gradient(120deg, #ffe5e5 0%, #ffd6d6 100%);
-      overflow: hidden;
-    }
-    .slide-container {
-      width: 1280px;
-      min-height: 720px;
-      margin: 0 auto;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      background: white;
-    }
-    .gradient-bg {
-      background: linear-gradient(135deg, #ffcdd2 0%, #ef9a9a 100%);
-    }
-    .header-accent {
-      background: linear-gradient(90deg, #d32f2f 0%, #e57373 100%);
-      height: 8px;
-    }
-    .title {
-      background: linear-gradient(90deg, #c62828, #ef5350);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .profile-box {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    }
-    .icon-circle {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #e57373 0%, #ef5350 100%);
-      color: white;
-      margin-right: 15px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일반화학 교육의 현재 문제점과 필요성</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        .header-accent {
+            background: linear-gradient(90deg, #2196f3 0%, #4caf50 100%);
+            height: 8px;
+        }
+        .title-gradient {
+            background: linear-gradient(90deg, #1976d2, #388e3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .problem-card {
+            background: linear-gradient(135deg, #f5f9ff 0%, #f1f8e9 100%);
+            border-radius: 12px;
+            border-left: 5px solid #2196f3;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .problem-card:hover {
+            transform: translateY(-3px);
+        }
+        .solution-card {
+            background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e9 100%);
+            border-radius: 12px;
+            border-left: 5px solid #4caf50;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .icon-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            color: #1976d2;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .footer-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(90deg, rgba(33, 150, 243, 0.1) 0%, rgba(76, 175, 80, 0.1) 100%);
+            border-top-left-radius: 50% 80%;
+            border-top-right-radius: 50% 80%;
+        }
+    </style>
 </head>
-<body class="flex items-center justify-center min-h-screen">
-  <div class="slide-container rounded-lg overflow-hidden">
-    <div class="header-accent"></div>
-
-    <!-- Main Content -->
-    <div class="p-16 h-full flex flex-col">
-      <!-- Title Section -->
-      <div class="text-center mb-12">
-        <h1 class="title text-5xl font-bold mb-4">예비 교사를 위한 일반화학 프로젝트 기반 학습</h1>
-        <h2 class="text-3xl text-gray-700 mb-2">AI 및 소프트웨어 기반 과학 시뮬레이션의 활용</h2>
-        <div class="w-32 h-1 bg-red-500 mx-auto mt-8 mb-10"></div>
-      </div>
-
-      <!-- Presenter Info -->
-      <div class="flex items-center justify-center space-x-12 my-8">
-        <div class="profile-box p-6 w-full max-w-xl">
-          <div class="flex items-center mb-4">
-            <div class="icon-circle">
-              <i class="fas fa-user-tie text-xl"></i>
+<body>
+    <div class="slide-container">
+        <div class="header-accent"></div>
+        
+        <!-- Main Content -->
+        <div class="p-12 h-full flex flex-col">
+            <!-- Title -->
+            <div class="mb-8">
+                <h1 class="title-gradient text-4xl font-bold">일반화학 교육의 현재 문제점과 필요성</h1>
+                <h2 class="text-xl text-gray-600 mt-2">Issues in General Chemistry Education for Pre-Service Teachers</h2>
+                <div class="w-24 h-1 bg-blue-500 mt-3"></div>
             </div>
-            <div>
-              <h3 class="text-2xl font-medium text-gray-800">김병선 (Byeong-Seon Kim)</h3>
-              <p class="text-gray-600">경상국립대학교 화학교육과</p>
+            
+            <!-- Two Columns Layout -->
+            <div class="grid grid-cols-2 gap-8 mb-6">
+                <!-- Current Issues Column -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-exclamation-triangle text-amber-500 mr-3"></i>
+                        현재 문제점
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div class="problem-card p-4 flex items-start">
+                            <div class="icon-circle mr-3 flex-shrink-0">
+                                <i class="fas fa-chalkboard text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">전통적 강의식 교육의 한계</h4>
+                                <p class="text-gray-600 text-sm">단방향 지식 전달 중심의 수업으로 심층적 이해 부족</p>
+                            </div>
+                        </div>
+                        
+                        <div class="problem-card p-4 flex items-start">
+                            <div class="icon-circle mr-3 flex-shrink-0">
+                                <i class="fas fa-flask text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">실험 기회의 제한</h4>
+                                <p class="text-gray-600 text-sm">시간, 공간, 장비, 안전 문제로 인한 실험 기회 부족</p>
+                            </div>
+                        </div>
+                        
+                        <div class="problem-card p-4 flex items-start">
+                            <div class="icon-circle mr-3 flex-shrink-0">
+                                <i class="fas fa-atom text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">추상적 개념 시각화 어려움</h4>
+                                <p class="text-gray-600 text-sm">분자 수준의 화학 반응 및 현상 이해 제한</p>
+                            </div>
+                        </div>
+                        
+                        <div class="problem-card p-4 flex items-start">
+                            <div class="icon-circle mr-3 flex-shrink-0">
+                                <i class="fas fa-users text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">학생 참여 부족</h4>
+                                <p class="text-gray-600 text-sm">수동적 학습으로 인한 창의적 문제해결력 개발 제한</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Needs and Solutions Column -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-lightbulb text-yellow-500 mr-3"></i>
+                        새로운 접근의 필요성
+                    </h3>
+                    
+                    <div class="solution-card p-5 mb-6">
+                        <h4 class="text-xl font-medium text-gray-800 mb-3">예비 교사에게 필요한 역량</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span class="text-gray-700">디지털 도구 활용 능력</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span class="text-gray-700">학생 중심 교수법 설계 역량</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span class="text-gray-700">창의적 문제해결 경험 제공 능력</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                                <span class="text-gray-700">과학적 개념의 시각화 및 설명 능력</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-blue-50 to-green-50 p-5 rounded-lg">
+                        <h4 class="text-xl font-medium text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-robot text-blue-500 mr-2"></i>
+                            AI 및 시뮬레이션의 가능성
+                        </h4>
+                        <p class="text-gray-700 mb-3">AI와 소프트웨어 기반 시뮬레이션은 위 문제들에 대한 해결책을 제시합니다:</p>
+                        <div class="grid grid-cols-2 gap-2 text-sm">
+                            <div class="bg-white p-2 rounded shadow-sm">
+                                <span class="text-blue-600 font-medium">가상 실험 환경 제공</span>
+                            </div>
+                            <div class="bg-white p-2 rounded shadow-sm">
+                                <span class="text-blue-600 font-medium">개인화된 학습 경험</span>
+                            </div>
+                            <div class="bg-white p-2 rounded shadow-sm">
+                                <span class="text-blue-600 font-medium">추상적 개념 시각화</span>
+                            </div>
+                            <div class="bg-white p-2 rounded shadow-sm">
+                                <span class="text-blue-600 font-medium">프로젝트 기반 접근 지원</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="grid grid-cols-2 gap-4 ml-16 text-gray-700">
-            <div class="flex items-center whitespace-nowrap">
-              <i class="fas fa-graduation-cap mr-3 text-red-500"></i>
-              <span>Department of Chemistry Education</span>
+            
+            <!-- Footer Quote -->
+            <div class="flex-grow"></div>
+            <div class="flex justify-between items-center text-gray-500 text-sm mt-4">
+                <div class="flex items-center">
+                    <i class="fas fa-quote-left mr-2 text-blue-400"></i>
+                    <span>"미래 교사 양성을 위해선 새로운 교육 방법론과 디지털 도구의 결합이 필수적입니다."</span>
+                </div>
+                <div>
+                    <p>김병선 | 경상국립대학교 화학교육과</p>
+                </div>
             </div>
-            <div class="flex items-center whitespace-nowrap">
-              <i class="fas fa-flask mr-2 text-red-400 text-base"></i>
-              <span class="truncate">유기 합성 및 소분자 합성 전문가</span>
-            </div>
-            <div class="flex items-center whitespace-nowrap">
-              <i class="fas fa-school mr-3 text-red-500"></i>
-              <span>미래교육센터</span>
-            </div>
-            <div class="flex items-center whitespace-nowrap">
-              <i class="fas fa-vial mr-3 text-red-400"></i>
-              <span>ELN(전자실험노트) 개발</span>
-            </div>
-          </div>
         </div>
-      </div>
-
-      <!-- Bottom Icons and Label -->
-      <div class="flex-grow"></div>
-      <div class="flex justify-between items-center mt-4">
-        <div class="flex space-x-4">
-          <i class="fas fa-atom text-4xl text-red-400"></i>
-          <i class="fas fa-laptop-code text-4xl text-red-300"></i>
-          <i class="fas fa-robot text-4xl text-red-500"></i>
-        </div>
-        <div class="text-right text-gray-500">
-          <p>제135회 대한화학회 학술발표회(춘계)</p>
-        </div>
-      </div>
+        
+        <!-- Bottom Design Element -->
+        <div class="footer-wave"></div>
     </div>
-
-    <!-- Footer Design Element -->
-    <div class="gradient-bg h-10"></div>
-  </div>
 </body>
 </html>
