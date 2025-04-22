@@ -1,0 +1,306 @@
+<!-- 7페이지 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프롬프트 작성법</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        .header-accent {
+            background: linear-gradient(90deg, #2196f3 0%, #4caf50 100%);
+            height: 8px;
+        }
+        .title-gradient {
+            background: linear-gradient(90deg, #1976d2, #388e3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .prompt-card {
+            background: linear-gradient(135deg, #f5f9ff 0%, #f1f8e9 100%);
+            border-radius: 12px;
+            border-left: 5px solid #2196f3;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .prompt-card:hover {
+            transform: translateY(-3px);
+        }
+        .technique-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid;
+        }
+        .technique-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        .blue-border {
+            border-left-color: #2196f3;
+        }
+        .green-border {
+            border-left-color: #4caf50;
+        }
+        .purple-border {
+            border-left-color: #9c27b0;
+        }
+        .orange-border {
+            border-left-color: #ff9800;
+        }
+        .example-block {
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+            font-family: 'Courier New', monospace;
+        }
+        .icon-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+        .blue-gradient {
+            background: linear-gradient(135deg, #2196f3, #64b5f6);
+        }
+        .green-gradient {
+            background: linear-gradient(135deg, #4caf50, #81c784);
+        }
+        .purple-gradient {
+            background: linear-gradient(135deg, #9c27b0, #ce93d8);
+        }
+        .orange-gradient {
+            background: linear-gradient(135deg, #ff9800, #ffb74d);
+        }
+        .footer-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(90deg, rgba(33, 150, 243, 0.1) 0%, rgba(76, 175, 80, 0.1) 100%);
+            border-top-left-radius: 50% 80%;
+            border-top-right-radius: 50% 80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-accent"></div>
+        
+        <!-- Main Content -->
+        <div class="p-12 h-full flex flex-col">
+            <!-- Title -->
+            <div class="mb-6">
+                <h1 class="title-gradient text-4xl font-bold">프롬프트 작성법</h1>
+                <h2 class="text-xl text-gray-600 mt-2">Prompt Writing Techniques</h2>
+                <div class="w-24 h-1 bg-blue-500 mt-3"></div>
+            </div>
+            
+            <!-- Two Columns Layout -->
+            <div class="grid grid-cols-2 gap-8">
+                <!-- Left Column: Prompt Concept and Techniques -->
+                <div>
+                    <div class="prompt-card p-5 mb-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-lightbulb text-blue-500 mr-2"></i>
+                            프롬프트의 개념
+                        </h3>
+                        <p class="text-gray-700 mb-4">프롬프트(Prompt)는 AI 모델에게 주어지는 <span class="font-medium text-blue-600">입력 텍스트</span>로, AI가 어떻게 응답할지 결정하는 <span class="font-medium text-green-600">지침</span>이 됩니다.</p>
+                        
+                        <div class="bg-blue-50 p-3 rounded-lg">
+                            <h4 class="font-medium text-gray-800 mb-2">좋은 프롬프트의 특징</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                    <span>명확하고 구체적인 지시 포함</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                    <span>원하는 출력 형식 명시</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                    <span>충분한 맥락 정보 제공</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                    <span>단계별 지시 활용</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3 flex items-center">
+                        <i class="fas fa-tools text-green-500 mr-2"></i>
+                        효과적인 프롬프트 기법
+                    </h3>
+                    
+                    <div class="space-y-3">
+                        <div class="technique-card blue-border p-3 flex items-start">
+                            <div class="icon-circle blue-gradient mr-3">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">역할 부여</h4>
+                                <p class="text-gray-600 text-sm">"화학 교육 전문가로서, 이 실험을 설명해주세요"</p>
+                            </div>
+                        </div>
+                        
+                        <div class="technique-card green-border p-3 flex items-start">
+                            <div class="icon-circle green-gradient mr-3">
+                                <i class="fas fa-list-ol"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">단계별 지시</h4>
+                                <p class="text-gray-600 text-sm">"다음 단계로 나누어 실험 과정을 안내해주세요: 1. 준비물, 2. 실험 방법, 3. 결과 분석"</p>
+                            </div>
+                        </div>
+                        
+                        <div class="technique-card purple-border p-3 flex items-start">
+                            <div class="icon-circle purple-gradient mr-3">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">출력 형식 지정</h4>
+                                <p class="text-gray-600 text-sm">"마크다운 표를 사용하여 실험 결과를 정리해주세요"</p>
+                            </div>
+                        </div>
+                        
+                        <div class="technique-card orange-border p-3 flex items-start">
+                            <div class="icon-circle orange-gradient mr-3">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">반복적 개선</h4>
+                                <p class="text-gray-600 text-sm">"이 응답을 더 간결하게 만들고 중학생이 이해할 수 있도록 수정해주세요"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Experiment Simulation Examples -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-flask text-blue-500 mr-2"></i>
+                        실험 시뮬레이션 프롬프트 예시
+                    </h3>
+                    
+                    <div class="bg-gradient-to-r from-blue-50 to-green-50 p-5 rounded-lg mb-5">
+                        <h4 class="font-medium text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-atom text-purple-500 mr-2"></i>
+                            핵융합 반응 시뮬레이션
+                        </h4>
+                        
+                        <div class="example-block p-3 mb-3 text-sm">
+                            <p class="text-gray-700">당신은 과학 교육 전문가입니다. 핵융합 반응에 대한 시뮬레이션을 만들어 주세요. 다음 내용을 포함해주세요:</p>
+                            <ol class="pl-5 mt-2 space-y-1 text-gray-700">
+                                <li>1. 별의 중심부에서 일어나는 수소 핵융합 과정을 단계별로 설명</li>
+                                <li>2. 중수소와 삼중수소가 결합하여 헬륨이 되는 과정 시각화</li>
+                                <li>3. 핵융합 반응에서 발생하는 에너지 계산 예시</li>
+                                <li>4. 중학생들이 이해할 수 있는 수준으로 설명</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="flex items-center justify-end">
+                            <span class="bg-white px-3 py-1 rounded-full text-blue-600 text-sm shadow-sm">
+                                <i class="fas fa-arrow-right mr-1"></i>
+                                상세한 단계별 핵융합 과정 시뮬레이션 생성
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-blue-50 to-green-50 p-5 rounded-lg mb-5">
+                        <h4 class="font-medium text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-vial text-green-500 mr-2"></i>
+                            불꽃반응 실험 시뮬레이션
+                        </h4>
+                        
+                        <div class="example-block p-3 mb-3 text-sm">
+                            <p class="text-gray-700">화학 선생님 역할을 맡아, 불꽃반응 실험의 가상 시뮬레이션을 제공해주세요:</p>
+                            <ol class="pl-5 mt-2 space-y-1 text-gray-700">
+                                <li>1. 다양한 금속염(Na, K, Cu, Ca, Sr)의 불꽃색 설명</li>
+                                <li>2. 각 금속이 특정 색을 나타내는 원리(전자 전이와 파장)</li>
+                                <li>3. 학생들이 관찰할 수 있는 현상 상세 설명</li>
+                                <li>4. 실험 과정 중 예상되는 결과와 사진 묘사</li>
+                                <li>5. 학생 질문에 대비한 QnA 포함</li>
+                            </ol>
+                        </div>
+                        
+                        <div class="flex items-center justify-end">
+                            <span class="bg-white px-3 py-1 rounded-full text-green-600 text-sm shadow-sm">
+                                <i class="fas fa-arrow-right mr-1"></i>
+                                금속별 불꽃색과 원리가 포함된 시뮬레이션
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white border border-gray-200 p-5 rounded-lg shadow-sm">
+                        <h4 class="font-medium text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                            프롬프트 최적화 팁
+                        </h4>
+                        
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700">학습 목표를 명확히 제시하세요</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700">학생 수준(중학생/고등학생)을 명시하세요</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700">시각적 묘사를 요청하여 이해도를 높이세요</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700">결과물을 단계별로 구조화하도록 요청하세요</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Quote -->
+            <div class="flex-grow"></div>
+            <div class="flex justify-between items-center text-gray-500 text-sm mt-4">
+                <div class="flex items-center">
+                    <i class="fas fa-quote-left mr-2 text-blue-400"></i>
+                    <span>"효과적인 프롬프트 작성은 AI 시뮬레이션의 교육적 가치를 극대화하는 핵심 역량입니다."</span>
+                </div>
+                <div>
+                    <p>김병선 | 경상국립대학교 화학교육과</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Design Element -->
+        <div class="footer-wave"></div>
+    </div>
+</body>
+</html>
