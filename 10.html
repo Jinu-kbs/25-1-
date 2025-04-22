@@ -1,0 +1,281 @@
+<!-- 10페이지 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>브루너의 표상 이론 적용</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        .header-accent {
+            background: linear-gradient(90deg, #2196f3 0%, #4caf50 100%);
+            height: 8px;
+        }
+        .title-gradient {
+            background: linear-gradient(90deg, #1976d2, #388e3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .representation-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 5px solid;
+        }
+        .representation-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        .enactive-border {
+            border-left-color: #2196f3;
+        }
+        .iconic-border {
+            border-left-color: #4caf50;
+        }
+        .symbolic-border {
+            border-left-color: #ff9800;
+        }
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .enactive-bg {
+            background: linear-gradient(135deg, #1976d2, #42a5f5);
+        }
+        .iconic-bg {
+            background: linear-gradient(135deg, #388e3c, #66bb6a);
+        }
+        .symbolic-bg {
+            background: linear-gradient(135deg, #f57c00, #ffb74d);
+        }
+        .arrow-down {
+            position: relative;
+            width: 100%;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+        }
+        .arrow-down::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 15px solid rgba(0, 0, 0, 0.1);
+        }
+        .application-box {
+            background: linear-gradient(135deg, #f5f9ff 0%, #f1f8e9 100%);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .footer-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(90deg, rgba(33, 150, 243, 0.1) 0%, rgba(76, 175, 80, 0.1) 100%);
+            border-top-left-radius: 50% 80%;
+            border-top-right-radius: 50% 80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-accent"></div>
+        
+        <!-- Main Content -->
+        <div class="p-12 h-full flex flex-col">
+            <!-- Title -->
+            <div class="mb-6">
+                <h1 class="title-gradient text-4xl font-bold">브루너의 표상 이론 적용</h1>
+                <h2 class="text-xl text-gray-600 mt-2">Bruner's Modes of Representation in Chemistry Education</h2>
+                <div class="w-24 h-1 bg-blue-500 mt-3"></div>
+            </div>
+            
+            <!-- Bruner's Theory Cards -->
+            <div class="grid grid-cols-3 gap-6 mb-8">
+                <!-- Enactive Representation -->
+                <div class="representation-card enactive-border p-5">
+                    <div class="flex flex-col items-center">
+                        <div class="icon-circle enactive-bg mb-4">
+                            <i class="fas fa-hand-pointer text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-2">행동적 표상</h3>
+                        <p class="text-gray-600 text-center">(Enactive Representation)</p>
+                        <div class="w-16 h-1 bg-blue-200 my-3"></div>
+                        <p class="text-gray-700 text-center">직접 조작과 행동을 통해 개념을 이해하는 단계</p>
+                    </div>
+                </div>
+                
+                <!-- Iconic Representation -->
+                <div class="representation-card iconic-border p-5">
+                    <div class="flex flex-col items-center">
+                        <div class="icon-circle iconic-bg mb-4">
+                            <i class="fas fa-image text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-2">영상적 표상</h3>
+                        <p class="text-gray-600 text-center">(Iconic Representation)</p>
+                        <div class="w-16 h-1 bg-green-200 my-3"></div>
+                        <p class="text-gray-700 text-center">시각적 이미지를 통해 개념을 이해하는 단계</p>
+                    </div>
+                </div>
+                
+                <!-- Symbolic Representation -->
+                <div class="representation-card symbolic-border p-5">
+                    <div class="flex flex-col items-center">
+                        <div class="icon-circle symbolic-bg mb-4">
+                            <i class="fas fa-superscript text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold text-lg text-gray-800 mb-2">상징적 표상</h3>
+                        <p class="text-gray-600 text-center">(Symbolic Representation)</p>
+                        <div class="w-16 h-1 bg-yellow-200 my-3"></div>
+                        <p class="text-gray-700 text-center">언어와 기호를 통해 추상적 개념을 이해하는 단계</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arrow-down mb-6"></div>
+            
+            <!-- Application in AI Chemistry Education -->
+            <div class="application-box p-6 mb-6">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-flask text-blue-500 mr-3"></i>
+                    일반화학 AI 시뮬레이션에의 적용
+                </h3>
+                
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-hand-pointer text-blue-500 mr-2"></i>
+                            <h4 class="font-medium text-gray-800">행동적 표상 적용</h4>
+                        </div>
+                        <ul class="text-gray-700 text-sm space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-400 mt-1 mr-2"></i>
+                                <span>가상 실험 도구 조작</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-400 mt-1 mr-2"></i>
+                                <span>AI 인터페이스 직접 상호작용</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-blue-400 mt-1 mr-2"></i>
+                                <span>실험 변인 조작 경험</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-image text-green-500 mr-2"></i>
+                            <h4 class="font-medium text-gray-800">영상적 표상 적용</h4>
+                        </div>
+                        <ul class="text-gray-700 text-sm space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
+                                <span>분자 구조 시각화</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
+                                <span>반응 메커니즘 애니메이션</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
+                                <span>그래프를 통한 데이터 시각화</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-3">
+                            <i class="fas fa-superscript text-yellow-500 mr-2"></i>
+                            <h4 class="font-medium text-gray-800">상징적 표상 적용</h4>
+                        </div>
+                        <ul class="text-gray-700 text-sm space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>화학 방정식 표현</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>열역학적 수식 이해</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-yellow-400 mt-1 mr-2"></i>
+                                <span>프롬프트 작성을 통한 개념화</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Key Benefits -->
+            <div class="bg-gradient-to-r from-blue-50 to-green-50 p-5 rounded-lg">
+                <h3 class="text-xl font-medium text-gray-800 mb-3 flex items-center">
+                    <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                    AI 시뮬레이션이 제공하는 표상 통합의 이점
+                </h3>
+                <div class="grid grid-cols-2 gap-x-8 gap-y-3">
+                    <div class="flex items-start">
+                        <i class="fas fa-angle-right text-blue-500 mt-1 mr-2"></i>
+                        <span class="text-gray-700">동시에 세 가지 표상 모드 경험 가능</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-angle-right text-blue-500 mt-1 mr-2"></i>
+                        <span class="text-gray-700">개인별 선호 표상 방식에 맞춘 학습</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-angle-right text-blue-500 mt-1 mr-2"></i>
+                        <span class="text-gray-700">추상적 개념의 다층적 이해 촉진</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-angle-right text-blue-500 mt-1 mr-2"></i>
+                        <span class="text-gray-700">예비 교사의 다양한 교수법 설계 역량 강화</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Quote -->
+            <div class="flex-grow"></div>
+            <div class="flex justify-between items-center text-gray-500 text-sm mt-4">
+                <div class="flex items-center">
+                    <i class="fas fa-quote-left mr-2 text-blue-400"></i>
+                    <span>"브루너의 표상 이론은 AI 시뮬레이션과 결합하여 화학 개념의 심층적 이해를 가능하게 합니다."</span>
+                </div>
+                <div>
+                    <p>김병선 | 경상국립대학교 화학교육과</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Design Element -->
+        <div class="footer-wave"></div>
+    </div>
+</body>
+</html>
