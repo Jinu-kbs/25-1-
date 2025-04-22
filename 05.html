@@ -1,0 +1,246 @@
+<!-- 5페이지 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 및 소프트웨어 시뮬레이션의 교육적 효과</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        .header-accent {
+            background: linear-gradient(90deg, #2196f3 0%, #4caf50 100%);
+            height: 8px;
+        }
+        .title-gradient {
+            background: linear-gradient(90deg, #1976d2, #388e3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .benefit-card {
+            background: linear-gradient(135deg, #f5f9ff 0%, #f1f8e9 100%);
+            border-radius: 12px;
+            border-left: 5px solid #2196f3;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .benefit-card:hover {
+            transform: translateY(-3px);
+        }
+        .tool-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .tool-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        .icon-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #bbdefb, #90caf9);
+            color: white;
+            margin-right: 15px;
+        }
+        .icon-circle.green {
+            background: linear-gradient(135deg, #c8e6c9, #a5d6a7);
+        }
+        .footer-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(90deg, rgba(33, 150, 243, 0.1) 0%, rgba(76, 175, 80, 0.1) 100%);
+            border-top-left-radius: 50% 80%;
+            border-top-right-radius: 50% 80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header-accent"></div>
+        
+        <!-- Main Content -->
+        <div class="p-12 h-full flex flex-col">
+            <!-- Title -->
+            <div class="mb-6">
+                <h1 class="title-gradient text-4xl font-bold">AI 및 소프트웨어 시뮬레이션의 교육적 효과</h1>
+                <h2 class="text-xl text-gray-600 mt-2">Educational Role of AI and Scientific Simulation Tools</h2>
+                <div class="w-24 h-1 bg-blue-500 mt-3"></div>
+            </div>
+            
+            <!-- Two Columns Layout -->
+            <div class="grid grid-cols-2 gap-8">
+                <!-- Left Column: Educational Benefits -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                        <i class="fas fa-graduation-cap text-blue-500 mr-2"></i>
+                        교육적 효과
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div class="benefit-card p-4 flex items-start">
+                            <div class="icon-circle flex-shrink-0">
+                                <i class="fas fa-vr-cardboard text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800 text-lg">추상적 개념의 가시화</h4>
+                                <p class="text-gray-600">분자 수준의 화학 반응과 현상을 시각적으로 표현하여 이해도 향상</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-card p-4 flex items-start">
+                            <div class="icon-circle flex-shrink-0">
+                                <i class="fas fa-user-cog text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800 text-lg">맞춤형 학습 경험</h4>
+                                <p class="text-gray-600">학습자의 수준과 진도에 맞춘 개인화된 교육 콘텐츠 제공</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-card p-4 flex items-start">
+                            <div class="icon-circle flex-shrink-0">
+                                <i class="fas fa-shield-alt text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800 text-lg">안전한 실험 환경</h4>
+                                <p class="text-gray-600">위험한 화학 실험도 안전하게 수행할 수 있는 가상 환경 제공</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-card p-4 flex items-start">
+                            <div class="icon-circle flex-shrink-0">
+                                <i class="fas fa-sync-alt text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800 text-lg">반복 학습 기회</h4>
+                                <p class="text-gray-600">시간과 공간의 제약 없이 무제한 실험 및 학습 가능</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: AI Tools and Implementation -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                        <i class="fas fa-robot text-green-500 mr-2"></i>
+                        AI 도구 및 적용 사례
+                    </h3>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="tool-card p-4 flex flex-col items-center">
+                            <div class="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-2">
+                                <i class="fas fa-comment-dots text-blue-500 text-xl"></i>
+                            </div>
+                            <h4 class="font-medium text-gray-800 text-center">Claude AI</h4>
+                            <p class="text-gray-600 text-sm text-center">대화형 실험 설계 및 결과 분석</p>
+                        </div>
+                        
+                        <div class="tool-card p-4 flex flex-col items-center">
+                            <div class="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mb-2">
+                                <i class="fas fa-atom text-green-500 text-xl"></i>
+                            </div>
+                            <h4 class="font-medium text-gray-800 text-center">분자 시뮬레이션</h4>
+                            <p class="text-gray-600 text-sm text-center">3D 분자 구조 및 반응 시각화</p>
+                        </div>
+                        
+                        <div class="tool-card p-4 flex flex-col items-center">
+                            <div class="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center mb-2">
+                                <i class="fas fa-chart-line text-purple-500 text-xl"></i>
+                            </div>
+                            <h4 class="font-medium text-gray-800 text-center">데이터 분석 도구</h4>
+                            <p class="text-gray-600 text-sm text-center">실험 데이터 시각화 및 해석</p>
+                        </div>
+                        
+                        <div class="tool-card p-4 flex flex-col items-center">
+                            <div class="h-12 w-12 rounded-full bg-red-100 flex items-center justify-center mb-2">
+                                <i class="fas fa-vial text-red-500 text-xl"></i>
+                            </div>
+                            <h4 class="font-medium text-gray-800 text-center">가상 실험실</h4>
+                            <p class="text-gray-600 text-sm text-center">실험 장비 조작 및 절차 학습</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Claude AI Implementation Example -->
+                    <div class="bg-gradient-to-r from-blue-50 to-green-50 p-5 rounded-lg">
+                        <h4 class="text-xl font-medium text-gray-800 mb-3 flex items-center">
+                            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                            Claude AI 활용 사례
+                        </h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white p-3 rounded-lg shadow-sm">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-flask text-blue-500 mr-2"></i>
+                                    <span class="font-medium text-gray-800">반응 메커니즘 탐구</span>
+                                </div>
+                                <p class="text-gray-600 text-sm">화학 반응의 단계별 메커니즘을 대화형으로 설명하고 시각화</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg shadow-sm">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-code text-green-500 mr-2"></i>
+                                    <span class="font-medium text-gray-800">시뮬레이션 코드 생성</span>
+                                </div>
+                                <p class="text-gray-600 text-sm">맞춤형 실험 시뮬레이션을 위한 코드 자동 생성</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg shadow-sm">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-question-circle text-purple-500 mr-2"></i>
+                                    <span class="font-medium text-gray-800">질의응답 튜터링</span>
+                                </div>
+                                <p class="text-gray-600 text-sm">개념 이해를 돕는 맞춤형 질의응답 및 피드백</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg shadow-sm">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-book text-red-500 mr-2"></i>
+                                    <span class="font-medium text-gray-800">전자실험노트(ELN)</span>
+                                </div>
+                                <p class="text-gray-600 text-sm">실험 결과 기록 및 분석을 위한 AI 지원 시스템</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Quote -->
+            <div class="flex-grow"></div>
+            <div class="flex justify-between items-center text-gray-500 text-sm mt-6">
+                <div class="flex items-center">
+                    <i class="fas fa-quote-left mr-2 text-blue-400"></i>
+                    <span>"AI 시뮬레이션은 예비 교사들에게 교육 콘텐츠 제작 역량과 디지털 리터러시를 동시에 함양시킵니다."</span>
+                </div>
+                <div>
+                    <p>김병선 | 경상국립대학교 화학교육과</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Design Element -->
+        <div class="footer-wave"></div>
+    </div>
+</body>
+</html>
