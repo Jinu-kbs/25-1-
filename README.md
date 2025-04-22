@@ -1,2 +1,126 @@
 # 25-1-
 발표자료
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예비 교사를 위한 일반화학 PBL: AI 및 과학 시뮬레이션 활용</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(120deg, #f0f9ff 0%, #e6f7ff 100%);
+            overflow: hidden;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #e0f7fa 0%, #bbdefb 100%);
+        }
+        .header-accent {
+            background: linear-gradient(90deg, #2196f3 0%, #4caf50 100%);
+            height: 8px;
+        }
+        .title {
+            background: linear-gradient(90deg, #1976d2, #388e3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .profile-box {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #bbdefb 0%, #81c784 100%);
+            color: white;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="slide-container rounded-lg overflow-hidden">
+        <div class="header-accent"></div>
+        
+        <!-- Main Content -->
+        <div class="p-16 h-full flex flex-col">
+            <!-- Title Section -->
+            <div class="text-center mb-12">
+                <h1 class="title text-5xl font-bold mb-4">
+                    예비 교사를 위한 일반화학 프로젝트 기반 학습
+                </h1>
+                <h2 class="text-3xl text-gray-700 mb-2">
+                    AI 및 소프트웨어 기반 과학 시뮬레이션의 활용
+                </h2>
+                <div class="w-32 h-1 bg-blue-500 mx-auto mt-8 mb-10"></div>
+            </div>
+            
+            <!-- Presenter Information -->
+            <div class="flex items-center justify-center space-x-12 my-8">
+                <div class="profile-box p-6 w-full max-w-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-circle">
+                            <i class="fas fa-user-tie text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-medium text-gray-800">김병선 (Byeong-Seon Kim)</h3>
+                            <p class="text-gray-600">경상국립대학교 화학교육과</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 ml-16 text-gray-700">
+                        <div class="flex items-center">
+                            <i class="fas fa-graduation-cap mr-3 text-blue-500"></i>
+                            <span>Department of Chemistry Education</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-flask mr-3 text-green-500"></i>
+                            <span>유기 합성, 소분자 합성 전문가</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-school mr-3 text-blue-500"></i>
+                            <span>미래교육센터</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-vial mr-3 text-green-500"></i>
+                            <span>ELN(전자실험노트) 개발</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Decoration -->
+            <div class="flex-grow"></div>
+            <div class="flex justify-between items-center mt-4">
+                <div class="flex space-x-4">
+                    <i class="fas fa-atom text-4xl text-blue-400"></i>
+                    <i class="fas fa-laptop-code text-4xl text-green-400"></i>
+                    <i class="fas fa-robot text-4xl text-blue-500"></i>
+                </div>
+                <div class="text-right text-gray-500">
+                    <p>제135회 대한화학회 학술발표회(춘계)</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Design Element -->
+        <div class="gradient-bg h-10"></div>
+    </div>
+</body>
+</html>
