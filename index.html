@@ -133,6 +133,17 @@
         });
       }
     }
+
+    function goHome() {
+      const frame = document.getElementById('experiment-frame');
+      const profile = document.getElementById('profile-content');
+      const mainMessage = document.getElementById('main-message');
+
+      frame.style.display = 'none';
+      profile.style.display = 'none';
+      mainMessage.style.display = 'block';
+      document.getElementById('feedback-section').style.display = 'none';
+    }
   </script>
 </head>
 
@@ -140,18 +151,9 @@
 
 <header>
   <div class="menu-button" onclick="toggleSidebar()">☰</div>
-  <div class="title-text">🔭 과학 가상실험 체험 부스 🎈</div>
-  function goHome() {
-  const frame = document.getElementById('experiment-frame');
-  const profile = document.getElementById('profile-content');
-  const mainMessage = document.getElementById('main-message');
-
-  frame.style.display = 'none';
-  profile.style.display = 'none';
-  mainMessage.style.display = 'block';
-  document.getElementById('feedback-section').style.display = 'none';
-}
-
+  <div class="title-text">
+    <a href="#" onclick="goHome()" class="hover:underline">🔭 과학 가상실험 체험 부스 🎈</a>
+  </div>
 </header>
 
 <div class="container">
@@ -170,17 +172,14 @@
   <div class="content">
     <div class="viewer">
       <div id="main-message" class="main-message">
-        경상국립대학교 유기합성연구실에서 테스트용으로 운영하는 웹사이트입니다.<br>
-        현재 부스에서 제공하는 가상실험 내용은<br>
-        <strong>2024년 2학기 PBL 수업</strong>과 <strong>유기합성연구실</strong>에서 학생들이 제작한 내용입니다.<br>
-        2025년 4월 26일 경상남도과학교육원에서 주최하는 과학의 날의 행사에서 일부 공개하였던 내용들을 웹사이트 형태로 재배포 중입니다.<br>
-        지금 방문하시는 페이지는 인공지능을 활용해서 코딩을 하고 있습니다.<br><br>
-        현재 홈페이지는 PC형태에 맞춰져 있으며, 모바일프레임은 개선 예정입니다. <br>
-        과학 가상실험 체험 부스 웹사이트 운영 등에 관한 의견이 있으시면 왼쪽 설문조사 참여하기를 통해서 의견을 공유해주시면 많은 도움이 됩니다!! <br>
-        <2025.04.27>
-        
+        경상국립대학교 유기합성연구실에서 테스트용으로 운영하는 웹사이트입니다.<br><br>
+        2025년 4월 26일 경상남도과학교육원 과학의 날 행사에서 일부 공개한 내용들을 기반으로 하고 있습니다.<br><br>
+        현재 페이지는 인공지능 기반으로 제작되었으며, 모바일 최적화는 추후 예정입니다.<br><br>
+        (2025.04.27.)
       </div>
+
       <iframe id="experiment-frame" src="" title="Experiment Viewer"></iframe>
+
       <div id="profile-content" class="profile-content" style="display:none;">
         <h2 class="text-xl font-bold mb-4">👨‍🏫 김병선 교수</h2>
         <p class="text-base leading-relaxed">
@@ -190,7 +189,7 @@
           ⚗️ 고속합성(HTE), 친환경 촉매 개발, 신약 후보물질 연구<br><br>
           🧪 전자연구노트(ELN), AI 기반 가상실험 등 디지털 혁신 추진<br><br>
           📚 STEM 융합 교육, PBL, 발견학습 강조<br><br>
-          🚀 창업 활동(에듀테크·화학 융합)으로 미래교육 준비<br><br>
+          🚀 에듀테크·화학 융합 창업 활동으로 미래교육 준비<br><br>
           🌍 학생 중심 탐구와 실험 혁신을 위해 노력 중!
         </p>
       </div>
