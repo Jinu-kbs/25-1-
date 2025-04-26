@@ -1,271 +1,215 @@
-<!-- 15페이지 -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>결론 및 향후 방향</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8fafc;
-            overflow-x: hidden;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔭 과학 가상실험 체험 부스 🎈</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #f9fafb; font-family: 'Noto Sans KR', sans-serif; }
+    header {
+      background-color: #1e3a8a; color: white;
+      padding: 1rem; display: flex; align-items: center; justify-content: center;
+      position: sticky; top: 0; z-index: 50;
+    }
+    .menu-button {
+      font-size: 1.8rem; cursor: pointer; margin-right: 1rem; position: absolute; left: 1rem;
+    }
+    .title-text {
+      font-size: 2.2rem; font-weight: bold;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      margin-top: 0.5rem;
+    }
+    .sidebar {
+      background-color: #e0f2fe; padding: 1rem;
+      font-size: 1rem;
+      width: 100%;
+    }
+    .sidebar a {
+      display: block; margin-bottom: 0.75rem; color: #2563eb;
+      text-decoration: none; font-weight: normal;
+    }
+    .sidebar a:hover { text-decoration: underline; }
+    .content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .viewer {
+      flex: 1;
+      background-color: #ffffff; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 70vh;
+    }
+    iframe { width: 100%; height: 100%; border: none; display: none; }
+    .main-message {
+      font-size: 1.25rem; color: #374151; text-align: center; padding: 2rem;
+    }
+    .feedback { padding: 1rem; background-color: #f3f4f6; border-top: 1px solid #e5e7eb; }
+    .feedback form { display: flex; flex-direction: column; gap: 0.5rem; }
+    .feedback .form-row { display: flex; gap: 0.5rem; }
+    .feedback input[type="text"] { flex: 2; min-width: 0; }
+    .feedback textarea { flex: 8; min-width: 0; }
+    .feedback input, .feedback textarea {
+      border: 1px solid #d1d5db; border-radius: 0.5rem; padding: 0.5rem;
+    }
+    .feedback button {
+      background-color: #3b82f6; color: white; padding: 0.5rem;
+      border-radius: 0.5rem; font-weight: bold; margin-top: 0.5rem;
+    }
+    .feedback button:hover { background-color: #2563eb; }
+    .comments { margin-top: 1rem; }
+    .comment {
+      background: white; border: 1px solid #e5e7eb;
+      padding: 0.5rem; border-radius: 0.5rem; margin-bottom: 0.5rem;
+    }
+    .comment strong { color: #1e40af; }
+    .profile-content { padding: 2rem; text-align: center; font-size: 1.1rem; }
+  </style>
+  <script>
+    let currentExperiment = '';
+    const comments = {};
+
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('hidden');
+    }
+
+    function loadExperiment(experimentId, url) {
+      currentExperiment = experimentId;
+      const frame = document.getElementById('experiment-frame');
+      const profile = document.getElementById('profile-content');
+      const mainMessage = document.getElementById('main-message');
+
+      if (experimentId === '소개') {
+        frame.style.display = 'none';
+        profile.style.display = 'block';
+        mainMessage.style.display = 'none';
+        document.getElementById('feedback-section').style.display = 'none';
+      } else {
+        frame.src = url;
+        frame.style.display = 'block';
+        profile.style.display = 'none';
+        mainMessage.style.display = 'none';
+
+        if (experimentId === '설문조사') {
+          document.getElementById('feedback-section').style.display = 'none';
+        } else {
+          document.getElementById('feedback-section').style.display = 'block';
         }
-        .slide-container {
-            width: 1280px;
-            min-height: 720px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            background: white;
+      }
+
+      renderComments();
+    }
+
+    function submitComment(event) {
+      event.preventDefault();
+      const name = document.getElementById('name-input').value.trim();
+      const text = document.getElementById('comment-input').value.trim();
+
+      if (name && text) {
+        const now = new Date();
+        const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+        const timestamp = `${now.getFullYear()}-${(now.getMonth()+1).toString().padStart(2,'0')}-${now.getDate().toString().padStart(2,'0')} (${dayNames[now.getDay()]}) ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
+
+        if (!comments[currentExperiment]) {
+          comments[currentExperiment] = [];
         }
-        .header-accent {
-            background: linear-gradient(90deg, #2196f3 0%, #4caf50 100%);
-            height: 8px;
-        }
-        .title-gradient {
-            background: linear-gradient(90deg, #1976d2, #388e3c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .conclusion-card {
-            background: linear-gradient(135deg, #f5f9ff 0%, #f1f8e9 100%);
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-        .conclusion-card:hover {
-            transform: translateY(-3px);
-        }
-        .future-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            border-left: 5px solid;
-        }
-        .future-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-        .blue-border {
-            border-left-color: #2196f3;
-        }
-        .green-border {
-            border-left-color: #4caf50;
-        }
-        .purple-border {
-            border-left-color: #9c27b0;
-        }
-        .icon-circle {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            margin-right: 16px;
-            flex-shrink: 0;
-        }
-        .blue-gradient {
-            background: linear-gradient(135deg, #2196f3, #64b5f6);
-        }
-        .green-gradient {
-            background: linear-gradient(135deg, #4caf50, #81c784);
-        }
-        .purple-gradient {
-            background: linear-gradient(135deg, #9c27b0, #ce93d8);
-        }
-        .contact-pill {
-            background: linear-gradient(90deg, rgba(33, 150, 243, 0.1), rgba(76, 175, 80, 0.1));
-            border-radius: 50px;
-            padding: 8px 16px;
-            display: inline-flex;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        .contact-pill:hover {
-            background: linear-gradient(90deg, rgba(33, 150, 243, 0.2), rgba(76, 175, 80, 0.2));
-            transform: translateY(-2px);
-        }
-        .footer-wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 60px;
-            background: linear-gradient(90deg, rgba(33, 150, 243, 0.1) 0%, rgba(76, 175, 80, 0.1) 100%);
-            border-top-left-radius: 50% 80%;
-            border-top-right-radius: 50% 80%;
-        }
-        .thank-you-text {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, #1976d2, #388e3c, #7b1fa2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-    </style>
+        comments[currentExperiment].push({ name, text, timestamp });
+        document.getElementById('name-input').value = '';
+        document.getElementById('comment-input').value = '';
+        renderComments();
+      } else {
+        alert('이름과 내용을 모두 입력해주세요.');
+      }
+    }
+
+    function renderComments() {
+      const commentBox = document.getElementById('comment-box');
+      commentBox.innerHTML = '';
+
+      if (comments[currentExperiment]) {
+        comments[currentExperiment].forEach(c => {
+          const div = document.createElement('div');
+          div.className = 'comment';
+          div.innerHTML = `<strong>${c.name}</strong>: ${c.text} <br><small>(${c.timestamp})</small>`;
+          commentBox.appendChild(div);
+        });
+      }
+    }
+
+    function goHome() {
+      const frame = document.getElementById('experiment-frame');
+      const profile = document.getElementById('profile-content');
+      const mainMessage = document.getElementById('main-message');
+
+      frame.style.display = 'none';
+      profile.style.display = 'none';
+      mainMessage.style.display = 'block';
+      document.getElementById('feedback-section').style.display = 'none';
+    }
+  </script>
 </head>
+
 <body>
-    <div class="slide-container">
-        <div class="header-accent"></div>
-        
-        <!-- Main Content -->
-        <div class="p-12 h-full flex flex-col">
-            <!-- Title -->
-            <div class="mb-6">
-                <h1 class="title-gradient text-4xl font-bold">결론 및 향후 방향</h1>
-                <h2 class="text-xl text-gray-600 mt-2">Conclusion and Educational Implications</h2>
-                <div class="w-24 h-1 bg-blue-500 mt-3"></div>
-            </div>
-            
-            <!-- Content: Two Columns Layout -->
-            <div class="grid grid-cols-2 gap-8">
-                <!-- Left Column: Key Conclusions -->
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-lightbulb text-blue-500 mr-2"></i>
-                        핵심 연구 결론
-                    </h3>
-                    
-                    <div class="conclusion-card p-5 mb-6">
-                        <div class="space-y-3">
-                            <div class="flex items-start">
-                                <div class="icon-circle blue-gradient">
-                                    <i class="fas fa-atom"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">개념적 이해 증진</h4>
-                                    <p class="text-gray-600">AI 기반 시뮬레이션을 통해 화학의 추상적 개념에 대한 이해도가 크게 향상됨</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="icon-circle green-gradient">
-                                    <i class="fas fa-project-diagram"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">교수법 역량 강화</h4>
-                                    <p class="text-gray-600">PBL과 AI 시뮬레이션의 결합이 예비 교사의 교수 설계 역량을 효과적으로 향상시킴</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="icon-circle purple-gradient">
-                                    <i class="fas fa-laptop-code"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium text-gray-800">디지털 리터러시 확장</h4>
-                                    <p class="text-gray-600">Claude AI 활용을 통한 AI 프롬프트 설계 및 적용 능력 배양</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Educational Implications -->
-                    <div class="bg-gradient-to-r from-blue-50 to-green-50 p-5 rounded-lg">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">교육적 의의</h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-start">
-                                <i class="fas fa-arrow-right text-blue-500 mt-1 mr-2"></i>
-                                <span class="text-gray-700">예비 교사의 화학 교육 전문성 향상 방안 제시</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-arrow-right text-blue-500 mt-1 mr-2"></i>
-                                <span class="text-gray-700">교사 양성 과정에 혁신적 교수법과 AI 기술 통합 모델 구축</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-arrow-right text-blue-500 mt-1 mr-2"></i>
-                                <span class="text-gray-700">실험 제약을 극복하는 대안적 교육 접근법 확립</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Right Column: Future Directions -->
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-compass text-green-500 mr-2"></i>
-                        향후 연구 방향
-                    </h3>
-                    
-                    <div class="space-y-4 mb-6">
-                        <div class="future-card blue-border p-4">
-                            <h4 class="font-medium text-blue-700 mb-1">AI 시뮬레이션 확장</h4>
-                            <p class="text-gray-600 text-sm">다양한 화학 분야로 시뮬레이션 모델 확장 및 통합 플랫폼 개발</p>
-                        </div>
-                        
-                        <div class="future-card green-border p-4">
-                            <h4 class="font-medium text-green-700 mb-1">장기 효과성 연구</h4>
-                            <p class="text-gray-600 text-sm">PBL + AI 시뮬레이션 교육의 장기적 효과에 대한 종단 연구 수행</p>
-                        </div>
-                        
-                        <div class="future-card purple-border p-4">
-                            <h4 class="font-medium text-purple-700 mb-1">교육과정 통합</h4>
-                            <p class="text-gray-600 text-sm">사범대학 정규 교육과정으로의 체계적 통합 방안 모색</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Contact Information -->
-                    <div class="bg-white p-5 rounded-lg shadow-sm">
-                        <h4 class="font-medium text-gray-800 mb-4 flex items-center">
-                            <i class="fas fa-envelope text-blue-500 mr-2"></i>
-                            연락처 및 추가 정보
-                        </h4>
-                        
-                        <div class="flex flex-col space-y-3">
-                            <div class="contact-pill">
-                                <i class="fas fa-envelope-open-text text-blue-500 mr-2"></i>
-                                <span class="text-gray-700">bskim@gnu.ac.kr</span>
-                            </div>
-                            
-                            <div class="contact-pill">
-                                <i class="fas fa-university text-green-500 mr-2"></i>
-                                <span class="text-gray-700">경상국립대학교 화학교육과</span>
-                            </div>
-                            
-                            <div class="contact-pill">
-                                <i class="fas fa-flask text-purple-500 mr-2"></i>
-                                <span class="text-gray-700">Jinchem, Inc. (전자실험노트 · 소분자합성)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Thank You Message -->
-            <div class="flex-grow flex items-center justify-center my-8">
-                <div class="thank-you-text">감사합니다</div>
-            </div>
-            
-            <!-- Footer -->
-            <div class="flex justify-between items-center text-gray-500 text-sm">
-                <div>
-                    <p>김병선 | 경상국립대학교 화학교육과</p>
-                </div>
-                <div class="flex items-center">
-                    <span class="mr-2">학술 발표 | 2024</span>
-                    <div class="flex space-x-2">
-                        <i class="fas fa-atom text-blue-400"></i>
-                        <i class="fas fa-laptop-code text-green-400"></i>
-                        <i class="fas fa-robot text-purple-400"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Bottom Design Element -->
-        <div class="footer-wave"></div>
+
+<header>
+  <div class="menu-button" onclick="toggleSidebar()">☰</div>
+  <div class="title-text">
+    <a href="#" onclick="goHome()" class="hover:underline">🔭 과학 가상실험 체험 부스 🎈</a>
+  </div>
+</header>
+
+<div class="container">
+  <div id="sidebar" class="sidebar">
+    <a href="#" onclick="loadExperiment('소개')">👨‍🏫 김병선 교수 소개</a>
+    <div class="mt-4 mb-2 font-bold">🧪 가상실험</div>
+    <a href="#" onclick="loadExperiment('자격루', 'https://kimwanhui.github.io/science/자격루')" class="pl-4">자격루 시계 원리</a>
+    <a href="#" onclick="loadExperiment('빛과식물', 'https://kimwanhui.github.io/science/빛과%20식물')" class="pl-4">빛과 식물</a>
+    <a href="#" onclick="loadExperiment('빗면의원리', 'https://kimwanhui.github.io/science/빗면2')" class="pl-4">빗면의 원리</a>
+    <a href="#" onclick="loadExperiment('샤를의법칙', 'https://kimwanhui.github.io/science/샤를')" class="pl-4">샤를의 법칙</a>
+    <a href="#" onclick="loadExperiment('곰팡이군락', 'https://kimwanhui.github.io/science/곰팡이군락')" class="pl-4">곰팡이 군락</a>
+    <a href="#" onclick="loadExperiment('별의밝기', 'https://kimwanhui.github.io/science/별의%20밝기')" class="pl-4">별의 밝기</a>
+    <a href="#" onclick="loadExperiment('설문조사', 'https://forms.gle/R8C8BrhXm47TjpYM6')" class="mt-6">📋 설문조사 참여하기</a>
+  </div>
+
+  <div class="content">
+    <div class="viewer">
+      <div id="main-message" class="main-message">
+        경상국립대학교 유기합성연구실에서 운영하는 과학가상실험 체험 부스입니다.<br><br>
+        현재 페이지는 AI를 활용해 제작 중이며, 모바일 최적화는 개선 예정입니다.<br><br>
+        (2025.04.27.)
+      </div>
+
+      <iframe id="experiment-frame" src="" title="Experiment Viewer"></iframe>
+
+      <div id="profile-content" class="profile-content" style="display:none;">
+        <h2 class="text-xl font-bold mb-4">👨‍🏫 김병선 교수</h2>
+        <p class="text-base leading-relaxed">
+          🏫 경상국립대 사범대학 화학교육과 재직<br><br>
+          🔬 유기합성·촉매화학·의약합성화학 연구<br><br>
+          🎓 고려대, University of Pennsylvania 박사, Rice University 박사후 연구<br><br>
+          🚀 STEM 융합교육, AI-화학 융합 연구 추진
+        </p>
+      </div>
     </div>
+
+    <div id="feedback-section" class="feedback">
+      <h2 class="text-lg font-bold mb-2">💬 실험에 대한 의견을 남겨주세요!</h2>
+      <form onsubmit="submitComment(event)">
+        <div class="form-row">
+          <input id="name-input" type="text" placeholder="이름(닉네임)" required>
+          <textarea id="comment-input" placeholder="의견을 입력하세요..." required></textarea>
+        </div>
+        <button type="submit">의견 제출</button>
+      </form>
+      <div id="comment-box" class="comments"></div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
