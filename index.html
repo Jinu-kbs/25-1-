@@ -141,6 +141,17 @@
 <header>
   <div class="menu-button" onclick="toggleSidebar()">☰</div>
   <div class="title-text">🔭 과학 가상실험 체험 부스 🎈</div>
+  function goHome() {
+  const frame = document.getElementById('experiment-frame');
+  const profile = document.getElementById('profile-content');
+  const mainMessage = document.getElementById('main-message');
+
+  frame.style.display = 'none';
+  profile.style.display = 'none';
+  mainMessage.style.display = 'block';
+  document.getElementById('feedback-section').style.display = 'none';
+}
+
 </header>
 
 <div class="container">
