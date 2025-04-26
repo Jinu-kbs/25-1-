@@ -21,14 +21,14 @@
     }
     .container { display: flex; height: calc(100vh - 5rem); }
     .sidebar {
-      background-color: #e0f2fe; padding: 1rem;
+      width: 250px; background-color: #e0f2fe; padding: 1rem;
       position: sticky; top: 5rem; height: calc(100vh - 5rem);
       overflow-y: auto; transition: transform 0.3s ease;
       font-size: 1rem;
     }
     .sidebar.hidden { transform: translateX(-100%); }
     .sidebar a {
-      display: block; margin-bottom: 0.75rem; color: #2563eb;
+      display: block; margin-bottom: 0.5rem; color: #2563eb;
       text-decoration: none; font-weight: normal;
     }
     .sidebar a:hover { text-decoration: underline; }
@@ -62,18 +62,6 @@
     }
     .comment strong { color: #1e40af; }
     .profile-content { padding: 2rem; text-align: center; font-size: 1.1rem; }
-
-    /* 반응형 사이드바 폭 조정 */
-    @media (max-width: 768px) {
-      .sidebar {
-        width: 80%;
-      }
-    }
-    @media (min-width: 769px) {
-      .sidebar {
-        width: 250px;
-      }
-    }
   </style>
   <script>
     let currentExperiment = '';
@@ -185,9 +173,11 @@
     <div class="viewer">
       <div id="main-message" class="main-message">
         경상국립대학교 유기합성연구실에서 테스트용으로 운영하는 웹사이트입니다.<br><br>
-        교육분야 공유 플랫폼을 기획중입니다.<br><br>
-        아래 게시판은 서버 저장되지 않으며, 왼쪽 설문조사 링크를 통해 의견 제출 바랍니다.<br><br>
-        모바일 최적화는 현재 개선 진행 중입니다. (2025.04.27.)
+        현재 부스에서 제공하는 가상실험 내용은<br>
+        <strong>2024년 2학기 PBL 수업</strong>과 <strong>유기합성연구실</strong>에서 학생들이 제작한 내용입니다.<br><br>
+        2025년 4월 26일 경상남도과학교육원 과학의 날 행사에서 일부 공개한 내용들을 기반으로 하고 있습니다.<br><br>
+        현재 페이지는 인공지능 기반으로 제작되었으며, 모바일 최적화는 추후 예정입니다.<br><br>
+        (2025.04.27.)
       </div>
 
       <iframe id="experiment-frame" src="" title="Experiment Viewer"></iframe>
