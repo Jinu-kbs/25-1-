@@ -17,13 +17,55 @@
         .viewer { flex: 1; border-left: 1px solid #e5e7eb; background-color: #ffffff; overflow: hidden; }
         iframe { width: 100%; height: 100%; border: none; }
         .feedback { padding: 1rem; background-color: #f3f4f6; border-top: 1px solid #e5e7eb; }
-        .feedback textarea { width: 100%; height: 150px; padding: 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; resize: vertical; }
-        .feedback button { margin-top: 1rem; background-color: #3b82f6; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 1rem; }
+        .feedback input, .feedback textarea { width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.5rem; }
+        .feedback button { background-color: #3b82f6; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 1rem; }
         .feedback button:hover { background-color: #2563eb; }
+        .comments { margin-top: 1rem; }
+        .comment { background-color: white; padding: 0.5rem; margin-bottom: 0.5rem; border-radius: 0.5rem; border: 1px solid #d1d5db; }
     </style>
     <script>
-        function loadExperiment(url) {
+        let comments = {
+            '자격루': [],
+            '빛과 식물': [],
+            '빗면의 원리': [],
+            '샤를의 법칙': [],
+            '곰팡이 군락': [],
+            '별의 밝기': [],
+            '설문조사 참여하기': []
+        };
+
+        let currentTopic = '';
+
+        function loadExperiment(url, topic) {
             document.getElementById('experiment-frame').src = url;
+            currentTopic = topic;
+            renderComments();
+        }
+
+        function submitComment() {
+            const name = document.getElementById('name').value.trim();
+            const text = document.getElementById('text').value.trim();
+            if (name && text && currentTopic) {
+                comments[currentTopic].push({ name, text });
+                document.getElementById('name').value = '';
+                document.getElementById('text').value = '';
+                renderComments();
+            } else {
+                alert('이름과 내용을 모두 입력해주세요.');
+            }
+        }
+
+        function renderComments() {
+            const container = document.getElementById('comment-list');
+            container.innerHTML = '';
+            if (comments[currentTopic]) {
+                comments[currentTopic].forEach(c => {
+                    const div = document.createElement('div');
+                    div.className = 'comment';
+                    div.innerHTML = `<strong>${c.name}</strong><br>${c.text}`;
+                    container.appendChild(div);
+                });
+            }
         }
     </script>
 </head>
@@ -33,12 +75,13 @@
 
 <div class="container">
     <div class="sidebar">
-        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/자격루')">자격루 시계 원리</a>
-        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/빛과%20식물')">빛과 식물</a>
-        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/빗면2')">빗면의 원리</a>
-        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/샤를')">샤를의 법칙</a>
-        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/곰팡이군락')">곰팡이 군락</a>
-        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/별의%20밝기')">별의 밝기</a>
+        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/자격루', '자격루')">자격루 시계 원리</a>
+        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/빛과%20식물', '빛과 식물')">빛과 식물</a>
+        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/빗면2', '빗면의 원리')">빗면의 원리</a>
+        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/샤를', '샤를의 법칙')">샤를의 법칙</a>
+        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/곰팡이군락', '곰팡이 군락')">곰팡이 군락</a>
+        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/별의%20밝기', '별의 밝기')">별의 밝기</a>
+        <a href="#" onclick="loadExperiment('https://forms.gle/R8C8BrhXm47TjpYM6', '설문조사 참여하기')">📋 설문조사 참여하기</a>
     </div>
 
     <div class="content">
@@ -47,22 +90,11 @@
         </div>
 
         <div class="feedback">
-            <h2 class="text-lg font-bold mb-2">💬 실험에 대한 의견을 남겨주세요!</h2>
-            <textarea placeholder="여기에 의견을 입력하세요..."></textarea>
-            <button>제출하기</button>
-
-            <div class="mt-8 text-center">
-                <p class="mb-4">
-                    안녕하세요! 🙌<br>
-                    경상국립대 유기화학연구실 가상실험 체험 부스입니다! 🎮🧪<br>
-                    가상실험을 해본 친구들의 🎯 이해도, 💡 흥미도, 📚 교육 활용 가능성을 알아보는 3~5분 설문이에요!<br>
-                    여러분의 소중한 답변이 🚀 더 멋진 과학 콘텐츠를 만드는 데 큰 힘이 됩니다!
-                </p>
-                <a href="https://forms.gle/R8C8BrhXm47TjpYM6" target="_blank" 
-                   class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
-                    📋 설문조사 참여하기
-                </a>
-            </div>
+            <h2 class="text-lg font-bold mb-2">💬 의견 남기기</h2>
+            <input id="name" type="text" placeholder="이름을 입력하세요">
+            <textarea id="text" placeholder="의견을 입력하세요..."></textarea>
+            <button onclick="submitComment()">작성하기</button>
+            <div id="comment-list" class="comments"></div>
         </div>
     </div>
 </div>
