@@ -1,102 +1,147 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>화학 가상실험 체험 부스</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        html { scroll-behavior: smooth; }
-        body { background-color: #f9fafb; font-family: 'Noto Sans KR', sans-serif; }
-        header { background-color: #1e3a8a; color: white; padding: 1.5rem; text-align: center; font-size: 1.8rem; font-weight: bold; position: sticky; top: 0; z-index: 50; }
-        .container { display: flex; height: calc(100vh - 5rem); }
-        .sidebar { min-width: 250px; background-color: #e0f2fe; padding: 2rem; position: sticky; top: 5rem; height: calc(100vh - 5rem); overflow-y: auto; }
-        .sidebar a { display: block; margin-bottom: 1rem; color: #1d4ed8; text-decoration: none; font-weight: bold; transition: color 0.3s; }
-        .sidebar a:hover { text-decoration: underline; color: #2563eb; }
-        .content { flex: 1; display: flex; flex-direction: column; }
-        .viewer { flex: 1; border-left: 1px solid #e5e7eb; background-color: #ffffff; overflow: hidden; }
-        iframe { width: 100%; height: 100%; border: none; }
-        .feedback { padding: 1rem; background-color: #f3f4f6; border-top: 1px solid #e5e7eb; }
-        .feedback input, .feedback textarea { width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.5rem; }
-        .feedback button { background-color: #3b82f6; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 1rem; }
-        .feedback button:hover { background-color: #2563eb; }
-        .comments { margin-top: 1rem; }
-        .comment { background-color: white; padding: 0.5rem; margin-bottom: 0.5rem; border-radius: 0.5rem; border: 1px solid #d1d5db; }
-    </style>
-    <script>
-        let comments = {
-            '자격루': [],
-            '빛과 식물': [],
-            '빗면의 원리': [],
-            '샤를의 법칙': [],
-            '곰팡이 군락': [],
-            '별의 밝기': [],
-            '설문조사 참여하기': []
-        };
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔭 과학 가상실험 체험 부스 🎈 – 경상국립대학교 사범대학 화학교육과 유기합성연구실</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #f9fafb; font-family: 'Noto Sans KR', sans-serif; }
+    header { background-color: #1e3a8a; color: white; padding: 1.5rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
+    .menu-button { font-size: 1.8rem; cursor: pointer; }
+    .container { display: flex; height: calc(100vh - 5rem); }
+    .sidebar { min-width: 250px; background-color: #e0f2fe; padding: 2rem; position: sticky; top: 5rem; height: calc(100vh - 5rem); overflow-y: auto; transition: transform 0.3s ease; }
+    .sidebar.hidden { transform: translateX(-100%); }
+    .sidebar a { display: block; margin-bottom: 1rem; color: #1d4ed8; text-decoration: none; font-weight: bold; transition: color 0.3s; }
+    .sidebar a:hover { text-decoration: underline; color: #2563eb; }
+    .content { flex: 1; display: flex; flex-direction: column; }
+    .viewer { flex: 1; border-left: 1px solid #e5e7eb; background-color: #ffffff; overflow: hidden; position: relative; }
+    iframe { width: 100%; height: 100%; border: none; }
+    .feedback { padding: 1rem; background-color: #f3f4f6; border-top: 1px solid #e5e7eb; }
+    .feedback form { display: flex; flex-direction: column; gap: 0.5rem; }
+    .feedback input, .feedback textarea { border: 1px solid #d1d5db; border-radius: 0.5rem; padding: 0.5rem; }
+    .feedback button { background-color: #3b82f6; color: white; padding: 0.5rem; border-radius: 0.5rem; font-weight: bold; }
+    .feedback button:hover { background-color: #2563eb; }
+    .comments { margin-top: 1rem; }
+    .comment { background: white; border: 1px solid #e5e7eb; padding: 0.5rem; border-radius: 0.5rem; margin-bottom: 0.5rem; }
+    .comment strong { color: #1e40af; }
+    .profile-content { padding: 2rem; text-align: center; }
+  </style>
+  <script>
+    let currentExperiment = '';
+    const comments = {};
 
-        let currentTopic = '';
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('hidden');
+    }
 
-        function loadExperiment(url, topic) {
-            document.getElementById('experiment-frame').src = url;
-            currentTopic = topic;
-            renderComments();
+    function loadExperiment(experimentId, url) {
+      currentExperiment = experimentId;
+
+      const frame = document.getElementById('experiment-frame');
+      const profile = document.getElementById('profile-content');
+
+      if (experimentId === '소개') {
+        frame.style.display = 'none';
+        profile.style.display = 'block';
+        document.getElementById('feedback-section').style.display = 'none';
+      } else {
+        frame.src = url;
+        frame.style.display = 'block';
+        profile.style.display = 'none';
+
+        if (experimentId === '설문조사') {
+          document.getElementById('feedback-section').style.display = 'none';
+        } else {
+          document.getElementById('feedback-section').style.display = 'block';
         }
+      }
 
-        function submitComment() {
-            const name = document.getElementById('name').value.trim();
-            const text = document.getElementById('text').value.trim();
-            if (name && text && currentTopic) {
-                comments[currentTopic].push({ name, text });
-                document.getElementById('name').value = '';
-                document.getElementById('text').value = '';
-                renderComments();
-            } else {
-                alert('이름과 내용을 모두 입력해주세요.');
-            }
-        }
+      renderComments();
+    }
 
-        function renderComments() {
-            const container = document.getElementById('comment-list');
-            container.innerHTML = '';
-            if (comments[currentTopic]) {
-                comments[currentTopic].forEach(c => {
-                    const div = document.createElement('div');
-                    div.className = 'comment';
-                    div.innerHTML = `<strong>${c.name}</strong><br>${c.text}`;
-                    container.appendChild(div);
-                });
-            }
+    function submitComment(event) {
+      event.preventDefault();
+      const name = document.getElementById('name-input').value.trim();
+      const text = document.getElementById('comment-input').value.trim();
+
+      if (name && text) {
+        if (!comments[currentExperiment]) {
+          comments[currentExperiment] = [];
         }
-    </script>
+        comments[currentExperiment].push({ name, text });
+        document.getElementById('name-input').value = '';
+        document.getElementById('comment-input').value = '';
+        renderComments();
+      } else {
+        alert('이름과 내용을 모두 입력해주세요.');
+      }
+    }
+
+    function renderComments() {
+      const commentBox = document.getElementById('comment-box');
+      commentBox.innerHTML = '';
+
+      if (comments[currentExperiment]) {
+        comments[currentExperiment].forEach(c => {
+          const div = document.createElement('div');
+          div.className = 'comment';
+          div.innerHTML = `<strong>${c.name}</strong>: ${c.text}`;
+          commentBox.appendChild(div);
+        });
+      }
+    }
+  </script>
 </head>
 <body>
 
-<header>🔭 화학 가상실험 체험 부스 🎈</header>
+<header>
+  🔭 과학 가상실험 체험 부스 🎈
+  <div class="menu-button" onclick="toggleSidebar()">☰</div>
+</header>
 
 <div class="container">
-    <div class="sidebar">
-        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/자격루', '자격루')">자격루 시계 원리</a>
-        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/빛과%20식물', '빛과 식물')">빛과 식물</a>
-        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/빗면2', '빗면의 원리')">빗면의 원리</a>
-        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/샤를', '샤를의 법칙')">샤를의 법칙</a>
-        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/곰팡이군락', '곰팡이 군락')">곰팡이 군락</a>
-        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/별의%20밝기', '별의 밝기')">별의 밝기</a>
-        <a href="#" onclick="loadExperiment('https://forms.gle/R8C8BrhXm47TjpYM6', '설문조사 참여하기')">📋 설문조사 참여하기</a>
+  <div id="sidebar" class="sidebar">
+    <a href="#" onclick="loadExperiment('소개')">👨‍🏫 김병선 교수 소개</a>
+    <a href="#" onclick="loadExperiment('자격루', 'https://kimwanhui.github.io/science/자격루')">자격루 시계 원리</a>
+    <a href="#" onclick="loadExperiment('빛과식물', 'https://kimwanhui.github.io/science/빛과%20식물')">빛과 식물</a>
+    <a href="#" onclick="loadExperiment('빗면의원리', 'https://kimwanhui.github.io/science/빗면2')">빗면의 원리</a>
+    <a href="#" onclick="loadExperiment('샤를의법칙', 'https://kimwanhui.github.io/science/샤를')">샤를의 법칙</a>
+    <a href="#" onclick="loadExperiment('곰팡이군락', 'https://kimwanhui.github.io/science/곰팡이군락')">곰팡이 군락</a>
+    <a href="#" onclick="loadExperiment('별의밝기', 'https://kimwanhui.github.io/science/별의%20밝기')">별의 밝기</a>
+    <a href="#" onclick="loadExperiment('설문조사', 'https://forms.gle/R8C8BrhXm47TjpYM6')">📋 설문조사 참여하기</a>
+  </div>
+
+  <div class="content">
+    <div class="viewer">
+      <iframe id="experiment-frame" src="" title="Experiment Viewer"></iframe>
+      <div id="profile-content" class="profile-content" style="display:none;">
+        <h2 class="text-xl font-bold mb-4">👨‍🏫 김병선 교수 소개</h2>
+        <p class="text-base leading-relaxed">
+          🏫 경상국립대 사범대학 화학교육과 재직<br>
+          🔬 유기합성·촉매화학·의약합성화학 연구<br>
+          🎓 고려대 졸업, University of Pennsylvania 박사, Rice University 박사후 연구<br>
+          ⚗️ 고속합성(HTE), 친환경 촉매 개발, 신약 후보물질 연구 주도<br>
+          🧪 전자연구노트(ELN), AI 기반 가상실험 등 디지털 혁신 추진<br>
+          📚 STEM 융합 교육, PBL, 발견학습 강조<br>
+          🚀 창업 활동(에듀테크·화학 융합)으로 미래교육 준비<br>
+          🌍 학생 중심 탐구와 실험 혁신을 위해 노력 중!
+        </p>
+      </div>
     </div>
 
-    <div class="content">
-        <div class="viewer">
-            <iframe id="experiment-frame" src="" title="Experiment Viewer"></iframe>
-        </div>
+    <div id="feedback-section" class="feedback">
+      <h2 class="text-lg font-bold mb-2">💬 실험에 대한 의견을 남겨주세요!</h2>
+      <form onsubmit="submitComment(event)">
+        <input id="name-input" type="text" placeholder="이름(닉네임)" required>
+        <textarea id="comment-input" placeholder="의견을 입력하세요..." required></textarea>
+        <button type="submit">의견 제출</button>
+      </form>
 
-        <div class="feedback">
-            <h2 class="text-lg font-bold mb-2">💬 의견 남기기</h2>
-            <input id="name" type="text" placeholder="이름을 입력하세요">
-            <textarea id="text" placeholder="의견을 입력하세요..."></textarea>
-            <button onclick="submitComment()">작성하기</button>
-            <div id="comment-list" class="comments"></div>
-        </div>
+      <div id="comment-box" class="comments"></div>
     </div>
+  </div>
 </div>
 
 </body>
