@@ -7,6 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body { background-color: #f9fafb; font-family: 'Noto Sans KR', sans-serif; }
+        .container { display: flex; }
+        .sidebar { min-width: 200px; background-color: #e0f2fe; padding: 2rem; position: sticky; top: 0; height: 100vh; }
+        .sidebar a { display: block; margin-bottom: 1rem; color: #1d4ed8; text-decoration: none; font-weight: bold; }
+        .sidebar a:hover { text-decoration: underline; }
+        .content { flex: 1; }
         .section { min-height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 2rem; border-bottom: 1px solid #e5e7eb; }
         h1 { font-size: 2rem; margin-bottom: 1rem; }
         p { font-size: 1.25rem; text-align: center; max-width: 700px; margin-bottom: 1.5rem; }
@@ -16,41 +21,54 @@
 </head>
 <body>
 
-    <div class="section bg-blue-100">
-        <h1>"자격루 시계" 원리</h1>
-        <p>자격루 시계의 구조가 어떤 원리로 구현되어 있는지 체크!</p>
-        <a href="https://kimwanhui.github.io/science/자격루" target="_blank" class="button">👉 실험하러 가기</a>
+<div class="container">
+    <div class="sidebar">
+        <a href="#jagyeokru">자격루 시계 원리</a>
+        <a href="#lightplant">빛과 식물</a>
+        <a href="#incline">빗면의 원리</a>
+        <a href="#charles">샤를의 법칙</a>
+        <a href="#mold">곰팡이 군락</a>
+        <a href="#star">별의 밝기</a>
     </div>
 
-    <div class="section bg-green-100">
-        <h1>빛과 식물</h1>
-        <p>식물이 빛을 통해 어떻게 생성하고, 구조를 만드는지 테스트.</p>
-        <a href="https://kimwanhui.github.io/science/빛과%20식물" target="_blank" class="button">👉 실험하러 가기</a>
-    </div>
+    <div class="content">
+        <div id="jagyeokru" class="section bg-blue-100">
+            <h1>"자격루 시계" 원리</h1>
+            <p>자격루 시계의 구조가 어떤 원리로 구현되어 있는지 체크!</p>
+            <a href="https://kimwanhui.github.io/science/자격루" target="_blank" class="button">👉 실험하러 가기</a>
+        </div>
 
-    <div class="section bg-yellow-100">
-        <h1>빗면의 원리</h1>
-        <p>빗면의 가편성과 무거운 물체가 빗면을 이용해 어떻게 내려오는지?</p>
-        <a href="https://kimwanhui.github.io/science/빗면2" target="_blank" class="button">👉 실험하러 가기</a>
-    </div>
+        <div id="lightplant" class="section bg-green-100">
+            <h1>빛과 식물</h1>
+            <p>식물이 빛을 통해 어떻게 생성하고, 구조를 만드는지 테스트.</p>
+            <a href="https://kimwanhui.github.io/science/빛과%20식물" target="_blank" class="button">👉 실험하러 가기</a>
+        </div>
 
-    <div class="section bg-pink-100">
-        <h1>샤를의 법칙</h1>
-        <p>거품이 커지면 더 큰 무엇인가가 되는지 이유를 알아보자!</p>
-        <a href="https://kimwanhui.github.io/science/샤를" target="_blank" class="button">👉 실험하러 가기</a>
-    </div>
+        <div id="incline" class="section bg-yellow-100">
+            <h1>빗면의 원리</h1>
+            <p>빗면의 가편성과 무거운 물체가 빗면을 이용해 어떻게 내려오는지?</p>
+            <a href="https://kimwanhui.github.io/science/빗면2" target="_blank" class="button">👉 실험하러 가기</a>
+        </div>
 
-    <div class="section bg-purple-100">
-        <h1>곰팡이 군락</h1>
-        <p>곰팡이는 가지가 다른 어떤 건강한 군락을 생성하나 테스트.</p>
-        <a href="https://kimwanhui.github.io/science/곰팡이군락" target="_blank" class="button">👉 실험하러 가기</a>
-    </div>
+        <div id="charles" class="section bg-pink-100">
+            <h1>샤를의 법칙</h1>
+            <p>거품이 커지면 더 큰 무엇인가가 되는지 이유를 알아보자!</p>
+            <a href="https://kimwanhui.github.io/science/샤를" target="_blank" class="button">👉 실험하러 가기</a>
+        </div>
 
-    <div class="section bg-indigo-100">
-        <h1>별의 밝기</h1>
-        <p>별이 더 밝아 보이는 이유를 테스트 통해 확인해보자.</p>
-        <a href="https://kimwanhui.github.io/science/별의%20밝기" target="_blank" class="button">👉 실험하러 가기</a>
+        <div id="mold" class="section bg-purple-100">
+            <h1>곰팡이 군락</h1>
+            <p>곰팡이는 가지가 다른 어떤 건강한 군락을 생성하나 테스트.</p>
+            <a href="https://kimwanhui.github.io/science/곰팡이군락" target="_blank" class="button">👉 실험하러 가기</a>
+        </div>
+
+        <div id="star" class="section bg-indigo-100">
+            <h1>별의 밝기</h1>
+            <p>별이 더 밝아 보이는 이유를 테스트 통해 확인해보자.</p>
+            <a href="https://kimwanhui.github.io/science/별의%20밝기" target="_blank" class="button">👉 실험하러 가기</a>
+        </div>
     </div>
+</div>
 
 </body>
 </html>
