@@ -32,8 +32,9 @@
     }
     .sidebar a:hover { text-decoration: underline; color: #2563eb; }
     .content { flex: 1; display: flex; flex-direction: column; }
-    .viewer { flex: 1; border-left: 1px solid #e5e7eb; background-color: #ffffff; overflow: hidden; position: relative; }
-    iframe { width: 100%; height: 100%; border: none; }
+    .viewer { flex: 1; border-left: 1px solid #e5e7eb; background-color: #ffffff; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; }
+    iframe { width: 100%; height: 100%; border: none; display: none; }
+    .main-message { font-size: 1.5rem; color: #374151; text-align: center; padding: 2rem; }
     .feedback { padding: 1rem; background-color: #f3f4f6; border-top: 1px solid #e5e7eb; }
     .feedback form { display: flex; flex-direction: column; gap: 0.5rem; }
     .feedback .form-row { display: flex; gap: 0.5rem; }
@@ -60,15 +61,18 @@
 
       const frame = document.getElementById('experiment-frame');
       const profile = document.getElementById('profile-content');
+      const mainMessage = document.getElementById('main-message');
 
       if (experimentId === '소개') {
         frame.style.display = 'none';
         profile.style.display = 'block';
+        mainMessage.style.display = 'none';
         document.getElementById('feedback-section').style.display = 'none';
       } else {
         frame.src = url;
         frame.style.display = 'block';
         profile.style.display = 'none';
+        mainMessage.style.display = 'none';
 
         if (experimentId === '설문조사') {
           document.getElementById('feedback-section').style.display = 'none';
@@ -142,6 +146,11 @@
 
   <div class="content">
     <div class="viewer">
+      <div id="main-message" class="main-message">
+        현재 부스에서 제공하는 가상실험 내용은<br>
+        <strong>2024년 2학기 PBL 수업</strong>과<br>
+        <strong>유기합성연구실</strong>에서 학생들이 제작한 내용입니다.
+      </div>
       <iframe id="experiment-frame" src="" title="Experiment Viewer"></iframe>
       <div id="profile-content" class="profile-content" style="display:none;">
         <h2 class="text-xl font-bold mb-4">👨‍🏫 김병선 교수 소개</h2>
