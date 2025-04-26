@@ -3,69 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>과학 가상실험 체험 부스</title>
+    <title>화학 가상실험 체험 부스</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
+        html { scroll-behavior: smooth; }
         body { background-color: #f9fafb; font-family: 'Noto Sans KR', sans-serif; }
-        .container { display: flex; }
-        .sidebar { min-width: 200px; background-color: #e0f2fe; padding: 2rem; position: sticky; top: 0; height: 100vh; }
-        .sidebar a { display: block; margin-bottom: 1rem; color: #1d4ed8; text-decoration: none; font-weight: bold; }
-        .sidebar a:hover { text-decoration: underline; }
-        .content { flex: 1; }
-        .section { min-height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 2rem; border-bottom: 1px solid #e5e7eb; }
-        h1 { font-size: 2rem; margin-bottom: 1rem; }
-        p { font-size: 1.25rem; text-align: center; max-width: 700px; margin-bottom: 1.5rem; }
-        a.button { background-color: #3b82f6; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 1rem; text-decoration: none; }
-        a.button:hover { background-color: #2563eb; }
+        header { background-color: #1e3a8a; color: white; padding: 1.5rem; text-align: center; font-size: 1.8rem; font-weight: bold; position: sticky; top: 0; z-index: 50; }
+        .container { display: flex; height: calc(100vh - 5rem); }
+        .sidebar { min-width: 250px; background-color: #e0f2fe; padding: 2rem; position: sticky; top: 5rem; height: calc(100vh - 5rem); overflow-y: auto; }
+        .sidebar a { display: block; margin-bottom: 1rem; color: #1d4ed8; text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        .sidebar a:hover { text-decoration: underline; color: #2563eb; }
+        .content { flex: 1; display: flex; flex-direction: column; }
+        .viewer { flex: 1; border-left: 1px solid #e5e7eb; background-color: #ffffff; overflow: hidden; }
+        iframe { width: 100%; height: 100%; border: none; }
+        .feedback { padding: 1rem; background-color: #f3f4f6; border-top: 1px solid #e5e7eb; }
+        .feedback textarea { width: 100%; height: 150px; padding: 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; resize: vertical; }
+        .feedback button { margin-top: 1rem; background-color: #3b82f6; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 1rem; }
+        .feedback button:hover { background-color: #2563eb; }
     </style>
+    <script>
+        function loadExperiment(url) {
+            document.getElementById('experiment-frame').src = url;
+        }
+    </script>
 </head>
 <body>
 
+<header>🔭 화학 가상실험 체험 부스 🎈</header>
+
 <div class="container">
     <div class="sidebar">
-        <a href="#jagyeokru">자격루 시계 원리</a>
-        <a href="#lightplant">빛과 식물</a>
-        <a href="#incline">빗면의 원리</a>
-        <a href="#charles">샤를의 법칙</a>
-        <a href="#mold">곰팡이 군락</a>
-        <a href="#star">별의 밝기</a>
+        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/자격루')">자격루 시계 원리</a>
+        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/빛과%20식물')">빛과 식물</a>
+        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/빗면2')">빗면의 원리</a>
+        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/샤를')">샤를의 법칙</a>
+        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/곰팡이군락')">곰팡이 군락</a>
+        <a href="#" onclick="loadExperiment('https://kimwanhui.github.io/science/별의%20밝기')">별의 밝기</a>
     </div>
 
     <div class="content">
-        <div id="jagyeokru" class="section bg-blue-100">
-            <h1>"자격루 시계" 원리</h1>
-            <p>자격루 시계의 구조가 어떤 원리로 구현되어 있는지 체크!</p>
-            <a href="https://kimwanhui.github.io/science/자격루" target="_blank" class="button">👉 실험하러 가기</a>
+        <div class="viewer">
+            <iframe id="experiment-frame" src="" title="Experiment Viewer"></iframe>
         </div>
 
-        <div id="lightplant" class="section bg-green-100">
-            <h1>빛과 식물</h1>
-            <p>식물이 빛을 통해 어떻게 생성하고, 구조를 만드는지 테스트.</p>
-            <a href="https://kimwanhui.github.io/science/빛과%20식물" target="_blank" class="button">👉 실험하러 가기</a>
-        </div>
+        <div class="feedback">
+            <h2 class="text-lg font-bold mb-2">💬 실험에 대한 의견을 남겨주세요!</h2>
+            <textarea placeholder="여기에 의견을 입력하세요..."></textarea>
+            <button>제출하기</button>
 
-        <div id="incline" class="section bg-yellow-100">
-            <h1>빗면의 원리</h1>
-            <p>빗면의 가편성과 무거운 물체가 빗면을 이용해 어떻게 내려오는지?</p>
-            <a href="https://kimwanhui.github.io/science/빗면2" target="_blank" class="button">👉 실험하러 가기</a>
-        </div>
-
-        <div id="charles" class="section bg-pink-100">
-            <h1>샤를의 법칙</h1>
-            <p>거품이 커지면 더 큰 무엇인가가 되는지 이유를 알아보자!</p>
-            <a href="https://kimwanhui.github.io/science/샤를" target="_blank" class="button">👉 실험하러 가기</a>
-        </div>
-
-        <div id="mold" class="section bg-purple-100">
-            <h1>곰팡이 군락</h1>
-            <p>곰팡이는 가지가 다른 어떤 건강한 군락을 생성하나 테스트.</p>
-            <a href="https://kimwanhui.github.io/science/곰팡이군락" target="_blank" class="button">👉 실험하러 가기</a>
-        </div>
-
-        <div id="star" class="section bg-indigo-100">
-            <h1>별의 밝기</h1>
-            <p>별이 더 밝아 보이는 이유를 테스트 통해 확인해보자.</p>
-            <a href="https://kimwanhui.github.io/science/별의%20밝기" target="_blank" class="button">👉 실험하러 가기</a>
+            <div class="mt-8 text-center">
+                <p class="mb-4">
+                    안녕하세요! 🙌<br>
+                    경상국립대 유기화학연구실 가상실험 체험 부스입니다! 🎮🧪<br>
+                    가상실험을 해본 친구들의 🎯 이해도, 💡 흥미도, 📚 교육 활용 가능성을 알아보는 3~5분 설문이에요!<br>
+                    여러분의 소중한 답변이 🚀 더 멋진 과학 콘텐츠를 만드는 데 큰 힘이 됩니다!
+                </p>
+                <a href="https://forms.gle/R8C8BrhXm47TjpYM6" target="_blank" 
+                   class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                    📋 설문조사 참여하기
+                </a>
+            </div>
         </div>
     </div>
 </div>
