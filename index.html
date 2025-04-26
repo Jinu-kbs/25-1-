@@ -11,27 +11,24 @@
     header {
       background-color: #1e3a8a; color: white;
       padding: 1rem; display: flex; align-items: center;
-      justify-content: center; position: sticky; top: 0; z-index: 50;
-    }
-    .title-container {
-      position: relative; width: 100%; text-align: center;
+      position: sticky; top: 0; z-index: 50;
     }
     .menu-button {
-      position: absolute; left: 1rem; top: 50%;
-      transform: translateY(-50%);
-      font-size: 1.8rem; cursor: pointer;
+      font-size: 1.8rem; cursor: pointer; margin-right: 1rem;
+    }
+    .title-text {
+      font-size: 3rem; font-weight: bold; flex-grow: 1; text-align: center;
     }
     .container { display: flex; height: calc(100vh - 5rem); }
     .sidebar {
-      min-width: 250px; background-color: #e0f2fe; padding: 1rem;
+      width: 250px; background-color: #e0f2fe; padding: 1rem;
       position: sticky; top: 5rem; height: calc(100vh - 5rem);
       overflow-y: auto; transition: transform 0.3s ease;
     }
     .sidebar.hidden { transform: translateX(-100%); }
     .sidebar a {
-      display: block; margin-bottom: 1rem;
-      color: #1d4ed8; text-decoration: none;
-      font-weight: bold; transition: color 0.3s;
+      display: block; margin-bottom: 0.75rem; color: #1d4ed8;
+      text-decoration: none; font-weight: bold; transition: color 0.3s;
     }
     .sidebar a:hover { text-decoration: underline; color: #2563eb; }
     .content { flex: 1; display: flex; flex-direction: column; }
@@ -49,6 +46,13 @@
     .comment { background: white; border: 1px solid #e5e7eb; padding: 0.5rem; border-radius: 0.5rem; margin-bottom: 0.5rem; }
     .comment strong { color: #1e40af; }
     .profile-content { padding: 2rem; text-align: center; }
+    .ad-panel {
+      width: 200px; background-color: #fef9c3;
+      padding: 1rem; border-left: 2px solid #facc15;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .ad-panel h2 { font-weight: bold; color: #ca8a04; margin-bottom: 1rem; }
+    .ad-panel p { text-align: center; color: #78350f; }
   </style>
   <script>
     let currentExperiment = '';
@@ -89,10 +93,14 @@
       const text = document.getElementById('comment-input').value.trim();
 
       if (name && text) {
+        const now = new Date();
+        const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+        const timestamp = `${now.getFullYear()}-${(now.getMonth()+1).toString().padStart(2,'0')}-${now.getDate().toString().padStart(2,'0')} (${dayNames[now.getDay()]}) ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
+
         if (!comments[currentExperiment]) {
           comments[currentExperiment] = [];
         }
-        comments[currentExperiment].push({ name, text });
+        comments[currentExperiment].push({ name, text, timestamp });
         document.getElementById('name-input').value = '';
         document.getElementById('comment-input').value = '';
         renderComments();
@@ -109,7 +117,7 @@
         comments[currentExperiment].forEach(c => {
           const div = document.createElement('div');
           div.className = 'comment';
-          div.innerHTML = `<strong>${c.name}</strong>: ${c.text}`;
+          div.innerHTML = `<strong>${c.name}</strong>: ${c.text} <br><small>(${c.timestamp})</small>`;
           commentBox.appendChild(div);
         });
       }
@@ -120,22 +128,23 @@
 <body>
 
 <header>
-  <div class="title-container">
-    <div class="menu-button" onclick="toggleSidebar()">☰</div> <!-- 왼쪽 상단 버튼 고정 -->
-    🔭 과학 가상실험 체험 부스 🎈
-  </div>
+  <div class="menu-button" onclick="toggleSidebar()">☰</div>
+  <div class="title-text">🔭 과학 가상실험 체험 부스 🎈</div>
 </header>
 
 <div class="container">
   <div id="sidebar" class="sidebar">
     <a href="#" onclick="loadExperiment('소개')">👨‍🏫 김병선 교수 소개</a>
-    <a href="#" onclick="loadExperiment('자격루', 'https://kimwanhui.github.io/science/자격루')">자격루 시계 원리</a>
-    <a href="#" onclick="loadExperiment('빛과식물', 'https://kimwanhui.github.io/science/빛과%20식물')">빛과 식물</a>
-    <a href="#" onclick="loadExperiment('빗면의원리', 'https://kimwanhui.github.io/science/빗면2')">빗면의 원리</a>
-    <a href="#" onclick="loadExperiment('샤를의법칙', 'https://kimwanhui.github.io/science/샤를')">샤를의 법칙</a>
-    <a href="#" onclick="loadExperiment('곰팡이군락', 'https://kimwanhui.github.io/science/곰팡이군락')">곰팡이 군락</a>
-    <a href="#" onclick="loadExperiment('별의밝기', 'https://kimwanhui.github.io/science/별의%20밝기')">별의 밝기</a>
-    <a href="#" onclick="loadExperiment('설문조사', 'https://forms.gle/R8C8BrhXm47TjpYM6')">📋 설문조사 참여하기</a>
+
+    <div class="text-blue-600 font-bold mt-6 mb-2">🧪 가상실험</div> <!-- 강조된 가상실험 카테고리 -->
+    <a href="#" onclick="loadExperiment('자격루', 'https://kimwanhui.github.io/science/자격루')" class="pl-4">자격루 시계 원리</a>
+    <a href="#" onclick="loadExperiment('빛과식물', 'https://kimwanhui.github.io/science/빛과%20식물')" class="pl-4">빛과 식물</a>
+    <a href="#" onclick="loadExperiment('빗면의원리', 'https://kimwanhui.github.io/science/빗면2')" class="pl-4">빗면의 원리</a>
+    <a href="#" onclick="loadExperiment('샤를의법칙', 'https://kimwanhui.github.io/science/샤를')" class="pl-4">샤를의 법칙</a>
+    <a href="#" onclick="loadExperiment('곰팡이군락', 'https://kimwanhui.github.io/science/곰팡이군락')" class="pl-4">곰팡이 군락</a>
+    <a href="#" onclick="loadExperiment('별의밝기', 'https://kimwanhui.github.io/science/별의%20밝기')" class="pl-4">별의 밝기</a>
+
+    <a href="#" onclick="loadExperiment('설문조사', 'https://forms.gle/R8C8BrhXm47TjpYM6')" class="mt-6">📋 설문조사 참여하기</a>
   </div>
 
   <div class="content">
@@ -168,6 +177,12 @@
       <div id="comment-box" class="comments"></div>
     </div>
   </div>
+
+  <div class="ad-panel">
+    <h2>📢 GNU 광고</h2>
+    <p>경상국립대학교<br>사범대학 화학교육과<br>유기합성연구실에 오신 것을 환영합니다!</p>
+  </div>
+
 </div>
 
 </body>
