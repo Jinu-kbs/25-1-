@@ -6,90 +6,51 @@
     <title>과학 가상실험 체험 부스</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        body { background-color: #f9fafb; font-family: 'Noto Sans KR', sans-serif; overflow-x: hidden; }
-        .slide { min-height: 100vh; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; }
-        .active { display: flex; }
+        body { background-color: #f9fafb; font-family: 'Noto Sans KR', sans-serif; }
+        .section { min-height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 4rem 2rem; border-bottom: 1px solid #e5e7eb; }
         h1 { font-size: 2rem; margin-bottom: 1rem; }
-        p { font-size: 1.25rem; text-align: center; max-width: 600px; }
-        .navigation { position: fixed; bottom: 20px; width: 100%; display: flex; justify-content: center; gap: 2rem; }
-        button { background-color: #3b82f6; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 1rem; }
+        p { font-size: 1.25rem; text-align: center; max-width: 700px; margin-bottom: 1.5rem; }
+        a.button { background-color: #3b82f6; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 1rem; text-decoration: none; }
+        a.button:hover { background-color: #2563eb; }
     </style>
 </head>
 <body>
-    <!-- Slides -->
-   <div class="slide bg-blue-100 active">
-    <h1>"자격루 시계" 원리</h1>
-    <p>자격루 시계의 구조가 어떤 원리로 구현되어 있는지 체크!</p>
 
-    <a href="https://kimwanhui.github.io/science/자격루" target="_blank" class="mt-6 block">
-        <img src="qr_code_jagyeokru.png" alt="자격루 링크 QR" class="w-48 mx-auto mt-4">
-        <span class="block text-blue-600 underline mt-2">👉 자격루 가상실험 보러가기</span>
-    </a>
-</div>
+    <div class="section bg-blue-100">
+        <h1>"자격루 시계" 원리</h1>
+        <p>자격루 시계의 구조가 어떤 원리로 구현되어 있는지 체크!</p>
+        <a href="https://kimwanhui.github.io/science/자격루" target="_blank" class="button">👉 실험하러 가기</a>
+    </div>
 
-
-    <div class="slide bg-green-100">
+    <div class="section bg-green-100">
         <h1>빛과 식물</h1>
         <p>식물이 빛을 통해 어떻게 생성하고, 구조를 만드는지 테스트.</p>
+        <a href="https://kimwanhui.github.io/science/빛과%20식물" target="_blank" class="button">👉 실험하러 가기</a>
     </div>
 
-    <div class="slide bg-yellow-100">
+    <div class="section bg-yellow-100">
         <h1>빗면의 원리</h1>
         <p>빗면의 가편성과 무거운 물체가 빗면을 이용해 어떻게 내려오는지?</p>
+        <a href="https://kimwanhui.github.io/science/빗면2" target="_blank" class="button">👉 실험하러 가기</a>
     </div>
 
-    <div class="slide bg-pink-100">
+    <div class="section bg-pink-100">
         <h1>샤를의 법칙</h1>
         <p>거품이 커지면 더 큰 무엇인가가 되는지 이유를 알아보자!</p>
+        <a href="https://kimwanhui.github.io/science/샤를" target="_blank" class="button">👉 실험하러 가기</a>
     </div>
 
-    <div class="slide bg-purple-100">
+    <div class="section bg-purple-100">
         <h1>곰팡이 군락</h1>
-        <p>곰팡이는 다른 어떤 건강한 군락을 생성하나? </p>
+        <p>곰팡이는 가지가 다른 어떤 건강한 군락을 생성하나 테스트.</p>
+        <a href="https://kimwanhui.github.io/science/곰팡이군락" target="_blank" class="button">👉 실험하러 가기</a>
     </div>
 
-    <div class="slide bg-indigo-100">
+    <div class="section bg-indigo-100">
         <h1>별의 밝기</h1>
         <p>별이 더 밝아 보이는 이유를 테스트 통해 확인해보자.</p>
+        <a href="https://kimwanhui.github.io/science/별의%20밝기" target="_blank" class="button">👉 실험하러 가기</a>
     </div>
 
-<div class="slide bg-gray-100">
-    <h1>화학 가상실험 체험 부스 안내</h1>
-    <p>안녕하세요! 과학 가상실험 체험 부스입니다! 테스트 후 어떻게 느끼셨는지 답변해주세요! 평균 3~5분 속에 가능합니다. 테스트 결과는 다음 과학 컨텐츠 개발에 큰 힘이 됩니다!
-    <br><br>문의: 김병선 교수 (bkim@gnu.ac.kr)
-    </p>
-
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScZ8gbrXokx9eEsKs7Ahqu_zQgUEYkNWUJjCz2M0yM_a7xRgA/viewform?usp=header" 
-       target="_blank" 
-       class="mt-6 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-       📋 설문조사 참여하기
-    </a>
-</div>
-
-    <!-- Navigation -->
-    <div class="navigation">
-        <button onclick="prevSlide()">이전</button>
-        <button onclick="nextSlide()">다음</button>
-    </div>
-
-    <script>
-        const slides = document.querySelectorAll('.slide');
-        let currentSlide = 0;
-
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            slides[index].classList.add('active');
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
-
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
-    </script>
 </body>
 </html>
