@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과학 가상실험 체험 부스</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f9fafb; font-family: 'Noto Sans KR', sans-serif; overflow-x: hidden; }
+        .slide { min-height: 100vh; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; }
+        .active { display: flex; }
+        h1 { font-size: 2rem; margin-bottom: 1rem; }
+        p { font-size: 1.25rem; text-align: center; max-width: 600px; }
+        .navigation { position: fixed; bottom: 20px; width: 100%; display: flex; justify-content: center; gap: 2rem; }
+        button { background-color: #3b82f6; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 1rem; }
+    </style>
+</head>
+<body>
+    <!-- Slides -->
+    <div class="slide bg-blue-100 active">
+        <h1>호수보관 "자격루 시계" 원리</h1>
+        <p>호수보관 자격루 시계의 구조가 어떤 원리로 구현되어 있는지 체크!</p>
+    </div>
+
+    <div class="slide bg-green-100">
+        <h1>밝과 식물</h1>
+        <p>식물이 밝을 통해 어떻게 생성하고, 구조를 만드는지 테스트.</p>
+    </div>
+
+    <div class="slide bg-yellow-100">
+        <h1>빅면의 원리</h1>
+        <p>빅면의 가편성 과 무겁다운 물체무가 빅면을 이용해 어떻게 이루어진거지?</p>
+    </div>
+
+    <div class="slide bg-pink-100">
+        <h1>샤르의 법칙</h1>
+        <p>거품이 흐지면 더 큰 바보가 건너지는 이유를 알아보자!</p>
+    </div>
+
+    <div class="slide bg-purple-100">
+        <h1>곰파이 군락</h1>
+        <p>곰파이는 가지가 다른 어느 건강한 군락을 생성하나  \uud14c스트.</p>
+    </div>
+
+    <div class="slide bg-indigo-100">
+        <h1>변의 밝기</h1>
+        <p>변이 더 밝아 보이는 이유를 테스트 통해 확인해보자.</p>
+    </div>
+
+    <div class="slide bg-gray-100">
+        <h1>화학 가상실험 체험 부스 안내</h1>
+        <p>안녕하세요! 건은보호는 과학 가상실험 체험 부스입니다! 테스트 후 어떻게 느기셨는지 답변해주세요! 평균 3~5분 속에 가능합니다. 테스트 결과는 다음 과학 컨텐츠 개발에 큰 힘이 됩니다!
+        <br><br>튶여: 김병선 교수 (bkim@gnu.ac.kr)
+        </p>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button onclick="prevSlide()">이전</button>
+        <button onclick="nextSlide()">다음</button>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+    </script>
+</body>
+</html>
