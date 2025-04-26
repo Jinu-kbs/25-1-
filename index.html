@@ -10,38 +10,33 @@
     body { background-color: #f9fafb; font-family: 'Noto Sans KR', sans-serif; }
     header {
       background-color: #1e3a8a; color: white;
-      padding: 1rem; display: flex; align-items: center; justify-content: center;
+      padding: 1rem; display: flex; align-items: center;
       position: sticky; top: 0; z-index: 50;
     }
     .menu-button {
-      font-size: 1.8rem; cursor: pointer; margin-right: 1rem; position: absolute; left: 1rem;
+      font-size: 1.8rem; cursor: pointer; margin-right: 1rem;
     }
     .title-text {
-      font-size: 2.2rem; font-weight: bold;
+      font-size: 2.2rem; font-weight: bold; flex-grow: 1; text-align: center;
     }
-    .container {
-      display: flex;
-      flex-direction: column;
-    }
+    .container { display: flex; height: calc(100vh - 5rem); }
     .sidebar {
-      background-color: #e0f2fe; padding: 1rem;
+      width: 250px; background-color: #e0f2fe; padding: 1rem;
+      position: sticky; top: 5rem; height: calc(100vh - 5rem);
+      overflow-y: auto; transition: transform 0.3s ease;
       font-size: 1rem;
     }
+    .sidebar.hidden { transform: translateX(-100%); }
     .sidebar a {
-      display: block; margin-bottom: 0.75rem; color: #2563eb;
+      display: block; margin-bottom: 0.5rem; color: #2563eb;
       text-decoration: none; font-weight: normal;
     }
     .sidebar a:hover { text-decoration: underline; }
-    .content {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
+    .content { flex: 1; display: flex; flex-direction: column; }
     .viewer {
       flex: 1;
       background-color: #ffffff; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      min-height: 70vh;
+      position: relative; display: flex; align-items: center; justify-content: center;
     }
     iframe { width: 100%; height: 100%; border: none; display: none; }
     .main-message {
@@ -73,8 +68,7 @@
     const comments = {};
 
     function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.classList.toggle('hidden');
+      document.getElementById('sidebar').classList.toggle('hidden');
     }
 
     function loadExperiment(experimentId, url) {
@@ -165,7 +159,7 @@
 <div class="container">
   <div id="sidebar" class="sidebar">
     <a href="#" onclick="loadExperiment('소개')">👨‍🏫 김병선 교수 소개</a>
-    <div class="mt-4 mb-2 font-bold">🧪 가상실험</div>
+    <div class="mt-6 mb-2 font-bold">🧪 가상실험</div>
     <a href="#" onclick="loadExperiment('자격루', 'https://kimwanhui.github.io/science/자격루')" class="pl-4">자격루 시계 원리</a>
     <a href="#" onclick="loadExperiment('빛과식물', 'https://kimwanhui.github.io/science/빛과%20식물')" class="pl-4">빛과 식물</a>
     <a href="#" onclick="loadExperiment('빗면의원리', 'https://kimwanhui.github.io/science/빗면2')" class="pl-4">빗면의 원리</a>
@@ -178,9 +172,9 @@
   <div class="content">
     <div class="viewer">
       <div id="main-message" class="main-message">
-        경상국립대학교 유기합성연구실에서 운영하는 과학가상실험 체험 부스입니다.<br><br>
-        (현재 페이지는 모바일 최적화 및 AI 자동화 개발 중입니다.)<br><br>
-        2025.04.27
+        경상국립대학교 유기합성연구실에서 테스트용으로 운영하는 웹사이트입니다.<br><br>
+        현재 페이지는 인공지능 기반으로 제작되었으며, 모바일 최적화는 추후 예정입니다.<br><br>
+        (2025.04.27.)
       </div>
 
       <iframe id="experiment-frame" src="" title="Experiment Viewer"></iframe>
@@ -189,9 +183,13 @@
         <h2 class="text-xl font-bold mb-4">👨‍🏫 김병선 교수</h2>
         <p class="text-base leading-relaxed">
           🏫 경상국립대 사범대학 화학교육과 재직<br><br>
-          🔬 유기합성, 촉매화학, 의약합성화학 연구<br><br>
+          🔬 유기합성·촉매화학·의약합성화학 연구<br><br>
+          🎓 고려대 졸업, University of Pennsylvania 박사, Rice University 박사후 연구원<br><br>
+          ⚗️ 고속합성(HTE), 친환경 촉매 개발, 신약 후보물질 연구<br><br>
+          🧪 전자연구노트(ELN), AI 기반 가상실험 등 디지털 혁신 추진<br><br>
           📚 STEM 융합 교육, PBL, 발견학습 강조<br><br>
-          🚀 AI, ELN(전자연구노트) 등 디지털 혁신 추진
+          🚀 에듀테크·화학 융합 창업 활동으로 미래교육 준비<br><br>
+          🌍 학생 중심 탐구와 실험 혁신을 위해 노력 중!
         </p>
       </div>
     </div>
